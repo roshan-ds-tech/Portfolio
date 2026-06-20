@@ -348,7 +348,7 @@ function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
         borderRadius:'16px',
         border:`1px solid ${hov ? 'var(--border-strong)' : 'var(--border)'}`,
         background: hov ? 'var(--bg-secondary)' : 'var(--bg-primary)',
-        boxShadow: hov ? '0 30px 60px rgba(0,0,0,0.7)' : '0 10px 30px rgba(0,0,0,0.3)',
+        boxShadow: hov ? 'var(--glow-accent), 0 30px 60px rgba(0,0,0,0.7)' : '0 10px 30px rgba(0,0,0,0.3)',
         transform: hov ? 'translateY(-2px)' : 'translateY(0)',
         transition:'background .4s, border-color .4s, box-shadow .4s, transform .4s', cursor:'pointer' }}>
 

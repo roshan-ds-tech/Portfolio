@@ -51,6 +51,7 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
 .content{
   position:relative;
   z-index:2;
+  background-color: #050505;
   background-image: url('/images/fog.png');
   background-attachment: fixed;
   background-size: cover;
@@ -68,16 +69,18 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
   z-index:1;
   background:linear-gradient(to bottom, #050505 0%, transparent 100%);
 }
-.sec{background:transparent;position:relative;z-index:2;}
-/* Subtle top-right corner dim */
+/* Uniform dark overlay — covers the FULL scrollable height of .content (not just the viewport).
+   This equalizes brightness: dark card sections and transparent text sections all get the
+   same dark wash on top of the fixed fog, removing the harsh visible line between sections. */
 .content::before{
   content:'';
-  position:fixed;
+  position:absolute;
   inset:0;
   pointer-events:none;
   z-index:0;
-  background:radial-gradient(circle at 90% 10%, rgba(5,5,5,0.45) 0%, rgba(5,5,5,0) 50%);
+  background: rgba(5,5,5,0.62);
 }
+.sec{background:transparent;position:relative;z-index:2;}
 
 /* hero cursor blink */
 .cursor{display:inline-block;animation:blink 1.1s steps(1) infinite}
@@ -153,7 +156,7 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(15, 15, 15, 0.75); /* Sleek dark translucent grey */
   backdrop-filter: blur(16px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.05);
+  box-shadow: var(--glow-accent), 0 4px 20px rgba(0, 0, 0, 0.3);
   padding: 4px;
   width: max-content;
 }

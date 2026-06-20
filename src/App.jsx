@@ -94,7 +94,7 @@ export default function App() {
 
       /* reveals */
       if (!reduce) {
-        ['.work-grid','.numbers-grid'].forEach((sel) => {
+        ['.work-grid'].forEach((sel) => {
           const grid = document.querySelector(sel);
           if (!grid) return;
           Array.from(grid.children).forEach((child,i) => {

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Eyebrow } from './Shared';
@@ -6,8 +6,27 @@ import { Eyebrow } from './Shared';
 gsap.registerPlugin(ScrollTrigger);
 
 function ProfileCard() {
+  const [hovered, setHovered] = useState(false);
   return (
-    <div className="ac-card ac-center" style={{ width: '350px', height: '670px', borderRadius:'18px', background: 'var(--bg-card)', border: '1px solid var(--border-strong)', boxShadow:'0 50px 110px rgba(0,0,0,0.6)', position:'absolute', willChange:'transform' }}>
+    <div 
+      className="ac-card ac-center" 
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ 
+        width: '350px', 
+        height: '670px', 
+        borderRadius:'18px', 
+        background: 'var(--bg-card)', 
+        border: `1px solid ${hovered ? 'var(--accent)' : 'var(--border-strong)'}`, 
+        boxShadow: hovered 
+          ? 'var(--glow-accent), 0 50px 110px rgba(0,0,0,0.6)' 
+          : '0 50px 110px rgba(0,0,0,0.6)', 
+        position:'absolute', 
+        willChange:'transform',
+        transition: 'border-color 0.4s, box-shadow 0.4s',
+        cursor: 'default'
+      }}
+    >
       <div className="ac-center-float" style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'baseline', padding:'18px 22px 12px',
           fontFamily:'var(--font-mono)', fontSize:'12px', color:'var(--text-tertiary)', letterSpacing:'.08em' }}>

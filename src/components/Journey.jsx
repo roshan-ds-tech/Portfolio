@@ -164,7 +164,7 @@ export default function Journey() {
         }
         .jrn-card-inner:hover {
           transform: translateY(-5px);
-          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.02);
+          box-shadow: var(--glow-accent), 0 30px 60px rgba(0, 0, 0, 0.8);
           border-color: rgba(255, 255, 255, 0.15);
           background: rgba(20, 20, 20, 0.8);
         }
