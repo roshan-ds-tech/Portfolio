@@ -1,0 +1,9 @@
+/* ============================================================
+   FONTS — Roshan DS Portfolio
+   Display / UI : Inter  (substitute for Neue Montreal & General Sans,
+                  both paid/non-Google; Inter matches the reference hero
+                  grotesque closely. Flagged to user for replacement.)
+   Mono / Terminal : JetBrains Mono
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');

@@ -1,0 +1,47 @@
+/* ============================================================
+   TYPOGRAPHY — Large editorial, minimal luxury
+   ============================================================ */
+:root {
+  /* --- Families --- */
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif; /* @kind font */
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif; /* @kind font */
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; /* @kind font */
+
+  /* --- Fluid display scale (clamped for cinematic headlines) --- */
+  --fs-mega:    clamp(4rem, 11vw, 11rem);    /* @kind font */
+  --fs-display: clamp(3rem, 7vw, 6.5rem);    /* @kind font */
+  --fs-h1:      clamp(2.25rem, 4.5vw, 3.75rem); /* @kind font */
+  --fs-h2:      clamp(1.75rem, 3vw, 2.5rem); /* @kind font */
+  --fs-h3:      clamp(1.25rem, 1.8vw, 1.625rem); /* @kind font */
+
+  /* --- Text scale --- */
+  --fs-lead:    clamp(1.125rem, 1.6vw, 1.5rem); /* @kind font */
+  --fs-body:    1.0625rem;   /* @kind font */
+  --fs-sm:      0.9375rem;   /* @kind font */
+  --fs-xs:      0.8125rem;   /* @kind font */
+  --fs-label:   0.75rem;     /* @kind font */
+
+  /* --- Weights --- */
+  --fw-light:   300; /* @kind font */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+
+  /* --- Line heights --- */
+  --lh-tight:   0.95;   /* @kind font */
+  --lh-snug:    1.1;    /* @kind font */
+  --lh-normal:  1.55;   /* @kind font */
+
+  /* --- Letter spacing --- */
+  --ls-mega:    -0.04em;  /* @kind font */
+  --ls-display: -0.03em;  /* @kind font */
+  --ls-tight:   -0.01em;  /* @kind font */
+  --ls-normal:  0em;      /* @kind font */
+  --ls-label:   0.22em;   /* @kind font */
+  --ls-wide:    0.35em;   /* @kind font */
+
+  /* --- Semantic aliases --- */
+  --text-eyebrow-size: var(--fs-label);     /* @kind font */
+  --text-eyebrow-spacing: var(--ls-label);  /* @kind font */
+}

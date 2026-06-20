@@ -1,0 +1,52 @@
+/* ============================================================
+   EFFECTS — shadows, glow, blur, grain, motion
+   ============================================================ */
+:root {
+  /* --- Shadows (deep, soft — cinematic depth) --- */
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:  0 12px 32px rgba(0,0,0,0.5);
+  --shadow-lg:  0 30px 70px rgba(0,0,0,0.6);
+  --shadow-xl:  0 50px 120px rgba(0,0,0,0.7);
+  --shadow-card: 0 24px 60px rgba(0,0,0,0.55);
+
+  /* --- Accent glows --- */
+  --glow-accent: 0 0 0 1px rgba(255,255,255,0.30), 0 0 28px rgba(255,255,255,0.18);
+  --glow-soft:   0 0 40px rgba(255,255,255,0.12);
+
+  /* --- Inner edge highlight (top-light catch) --- */
+  --inset-top: inset 0 1px 0 rgba(255,255,255,0.05);
+
+  /* --- Blur --- */
+  --blur-sm: 8px;  /* @kind other */
+  --blur-md: 16px; /* @kind other */
+  --blur-lg: 40px; /* @kind other */
+
+  /* --- Motion: premium easing --- */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --ease-out-back:  cubic-bezier(0.34, 1.4, 0.64, 1); /* @kind other */
+  --ease-glide:     cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+
+  --dur-fast:   0.25s; /* @kind other */
+  --dur-base:   0.45s; /* @kind other */
+  --dur-slow:   0.8s;  /* @kind other */
+  --dur-cine:   1.2s;  /* @kind other */
+
+  /* --- Atmospheric gradients --- */
+  --grad-top-light: radial-gradient(120% 100% at 85% 0%, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0) 55%); /* @kind other */
+  --grad-fog:       radial-gradient(80% 60% at 50% 100%, rgba(140,150,160,0.05) 0%, rgba(0,0,0,0) 70%); /* @kind other */
+  --grad-vignette:  radial-gradient(120% 90% at 50% 40%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); /* @kind other */
+  --grad-fade-up:   linear-gradient(to top, var(--bg-primary) 0%, rgba(5,5,5,0) 100%); /* @kind other */
+}
+
+/* Film-grain texture — SVG fractal noise, applied as ::after overlay */
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}

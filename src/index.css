@@ -1,0 +1,196 @@
+@import './styles/tokens/fonts.css';
+@import './styles/tokens/colors.css';
+@import './styles/tokens/typography.css';
+@import './styles/tokens/spacing.css';
+@import './styles/tokens/effects.css';
+
+:root {
+  --accent: #FFFFFF;
+  --accent-dim: #B8B8B8;
+  --accent-soft: rgba(255,255,255,0.09);
+  --accent-glow: 0 0 0 1px rgba(255,255,255,0.28), 0 0 28px rgba(255,255,255,0.18);
+  --glow-accent: 0 0 0 1px rgba(255,255,255,0.28), 0 0 28px rgba(255,255,255,0.18);
+  --text-inverse: #050505;
+  --bg-card: #151515;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{background:transparent;color:var(--text-primary);font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block}
+::selection{background:var(--accent);color:var(--text-inverse)}
+/* scrollbar */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg-primary)}
+::-webkit-scrollbar-thumb{background:#222;border-radius:10px;border:3px solid var(--bg-primary)}
+
+h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
+
+/* ---- hero pinned layer ---- */
+.hero-sticky{position:relative;z-index:1;height:100vh;width:100%;overflow:hidden;background:transparent}
+/* .hero-fade-bottom is animated by GSAP — starts opacity:0 so shadow only shows on scroll */
+.hero-fade-bottom{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:50%;
+  pointer-events:none;
+  z-index:100;
+  opacity:0;
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(5,5,5,0.35) 35%,
+    rgba(5,5,5,0.7) 60%,
+    rgba(5,5,5,0.96) 85%,
+    #050505 100%
+  );
+}
+.hero-inner{will-change:transform,opacity,filter}
+/* Content sections: fog.png background with element-relative top blend */
+.content{
+  position:relative;
+  z-index:2;
+  background-image: url('/images/fog.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0 -70px 90px 20px rgba(0,0,0,0.75);
+}
+/* Top blend: absolute (element-relative) so it correctly covers the hard edge */
+.content::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:160px;
+  pointer-events:none;
+  z-index:1;
+  background:linear-gradient(to bottom, #050505 0%, transparent 100%);
+}
+.sec{background:transparent;position:relative;z-index:2;}
+/* Subtle top-right corner dim */
+.content::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:radial-gradient(circle at 90% 10%, rgba(5,5,5,0.45) 0%, rgba(5,5,5,0) 50%);
+}
+
+/* hero cursor blink */
+.cursor{display:inline-block;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* DS image float animation */
+@keyframes float-ds {
+  0% { transform: translateY(0px) scale(1.05); }
+  50% { transform: translateY(-12px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1.05); }
+}
+
+/* fog / godray atmosphere */
+.fog{position:absolute;pointer-events:none;z-index:1;filter:blur(60px);opacity:.6}
+.fog-a{width:60vw;height:60vw;top:-10vw;right:-5vw;
+  background:radial-gradient(circle,rgba(150,160,170,0.10),rgba(0,0,0,0) 70%)}
+.fog-b{width:50vw;height:50vw;bottom:-15vw;left:5vw;
+  background:radial-gradient(circle,rgba(120,130,140,0.07),rgba(0,0,0,0) 70%)}
+.godray{position:absolute;top:-20%;right:8%;width:40vw;height:120vh;pointer-events:none;z-index:1;
+  opacity:.3;transform:rotate(18deg);
+  background:linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0) 60%);
+  filter:blur(40px)}
+
+/* nav indicator hover */
+.nav-ind{transition:transform .4s var(--ease-out-expo)}
+.nav-ind:hover{transform:translateY(-4px)}
+.nav-ind:hover svg{stroke:var(--accent)}
+
+/* about card resting (stacked behind center) positions */
+.ac-left{transform:translateX(0px) rotate(0deg);z-index:1}
+.ac-right{transform:translateX(0px) rotate(0deg);z-index:1}
+.ac-center{transform:translateY(0) scale(0.92);z-index:10}
+
+/* reveal-on-scroll (IntersectionObserver-driven; visible by default if JS off) */
+.reveal-armed{opacity:0;transform:translateY(46px);
+  transition:opacity .95s var(--ease-out-expo), transform .95s var(--ease-out-expo)}
+.reveal-in{opacity:1 !important;transform:none !important}
+
+/* ---- responsive ---- */
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr !important}
+  .hero-mono{position:absolute !important;inset:0;opacity:0.32;z-index:1 !important}
+  .hero-mono img{height:100% !important;right:-10% !important}
+  .hero-copy{grid-column:1;padding-right:1.5rem !important}
+  .hero-nav{flex-wrap:wrap;gap:10px}
+  .ac-stage{height:auto !important;flex-direction:column;gap:24px;padding:0 var(--section-pad-x)}
+  .ac-card{position:relative !important;transform:none !important;width:100% !important;
+    max-width:360px;height:auto !important}
+  .ac-center{order:-1}
+  .ac-portrait{height:auto !important;aspect-ratio:792/1070 !important}
+  .work-grid{grid-template-columns:1fr !important}
+  .work-split{grid-template-columns:1fr !important}
+  .work-split>div:last-child{display:none}
+  .numbers-grid{grid-template-columns:repeat(2,1fr) !important}
+  .milestone{grid-template-columns:1fr !important}
+  .exp-row{grid-template-columns:1fr !important;gap:12px !important}
+  .contact-head{font-size:clamp(2.4rem,12vw,5rem) !important}
+}
+@media (max-width:560px){
+  .numbers-grid{grid-template-columns:1fr !important}
+}
+@media (prefers-reduced-motion: reduce){
+  .cursor{animation:none}
+}
+
+/* Expandable Tabs Component */
+.expandable-tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(15, 15, 15, 0.75); /* Sleek dark translucent grey */
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  width: max-content;
+}
+
+.tab-separator {
+  margin: 0 4px;
+  height: 24px;
+  width: 1.2px;
+  background: var(--border);
+}
+
+.tab-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.tab-inactive {
+  color: var(--text-tertiary);
+}
+
+.tab-inactive:hover {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.tab-active {
+  background: var(--bg-elevated);
+  color: var(--accent);
+}

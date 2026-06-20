@@ -1,0 +1,36 @@
+/* ============================================================
+   COLORS — Dark Charcoal Luxury
+   ============================================================ */
+:root {
+  /* --- Base surfaces (charcoal-black ramp) --- */
+  --bg-primary:    #050505;   /* page base — near-pure black */
+  --bg-secondary:  #0A0A0A;   /* raised sections */
+  --bg-tertiary:   #111111;   /* deepest panels */
+  --bg-card:       #151515;   /* card fills */
+  --bg-elevated:   #1C1C1C;   /* hover / elevated card */
+
+  /* --- Borders & hairlines --- */
+  --border:        rgba(255,255,255,0.08);  /* default hairline */
+  --border-strong: rgba(255,255,255,0.14);  /* hover / focus edge */
+  --border-faint:  rgba(255,255,255,0.04);  /* barely-there divider */
+
+  /* --- Text --- */
+  --text-primary:   #F5F5F5;  /* headings, key copy */
+  --text-secondary: #B0B0B0;  /* body, supporting */
+  --text-tertiary:  #6E6E6E;  /* captions, meta, disabled */
+  --text-inverse:   #050505;  /* text on accent fills */
+
+  /* --- Accent: crisp white --- */
+  --accent:         #FFFFFF;
+  --accent-dim:     #D4D4D4;  /* hover / pressed accent */
+  --accent-soft:    rgba(255,255,255,0.08);  /* tint wash */
+  --accent-glow:    rgba(255,255,255,0.25);  /* glow / shadow */
+
+  /* --- Links: cool blue --- */
+  --link:           #4DA6FF;
+  --link-hover:     #7CC0FF;
+
+  /* --- Cinematic lighting --- */
+  --light-warm:     rgba(255,255,255,0.10); /* top-right volumetric */
+  --fog:            rgba(140,150,160,0.06);  /* atmospheric haze */
+}
