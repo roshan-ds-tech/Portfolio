@@ -17,7 +17,7 @@ export default function Contact() {
       <div style={{ position:'relative', zIndex:2 }}>
         <Eyebrow index="07">Get in touch</Eyebrow>
         <h2 className="contact-head" style={{ margin:'var(--space-6) 0 0', fontFamily:'var(--font-display)',
-          fontSize:'clamp(3rem,10vw,9rem)', fontWeight:600, lineHeight:0.92, letterSpacing:'-0.04em',
+          fontSize:'clamp(2.5rem, 6.5vw, 5.2rem)', fontWeight:600, lineHeight:0.92, letterSpacing:'-0.04em',
           color:'var(--text-primary)' }}>LET'S BUILD<br/>SOMETHING <span style={{ color:'var(--accent)' }}>AMAZING</span></h2>
         <div style={{ display:'flex', gap:'16px', flexWrap:'wrap', marginTop:'var(--space-8)' }}>
           {links.map((l,i)=>(

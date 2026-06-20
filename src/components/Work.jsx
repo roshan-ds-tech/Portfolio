@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -24,57 +24,24 @@ const WORK_PROJECTS = [
 /* ── Project screen mockups ─────────────────────────────────────────── */
 function MythicScreen() {
   return (
-    <div style={{ height:'100%', position:'relative', overflow:'hidden', background:'linear-gradient(160deg,#12182e,#080c18)' }}>
-      <div style={{ position:'absolute', inset:0, background:'radial-gradient(70% 60% at 75% 20%, rgba(255,255,255,0.06), transparent)' }} />
-      <div style={{ padding:'18px 24px', display:'flex', justifyContent:'space-between', alignItems:'center', borderBottom:'1px solid rgba(255,255,255,0.05)' }}>
-        <span style={{ fontFamily:'var(--font-mono)', fontSize:'12px', letterSpacing:'.18em', color:'rgba(255,255,255,0.7)' }}>MYTHIC</span>
-        <div style={{ display:'flex', gap:'20px' }}>
-          {['World','Story','Enter'].map(t=><span key={t} style={{ fontFamily:'var(--font-mono)', fontSize:'11px', color:'rgba(255,255,255,0.35)', letterSpacing:'.1em' }}>{t}</span>)}
-        </div>
-      </div>
-      <div style={{ padding:'40px 24px 0', position:'relative', zIndex:1 }}>
-        <div style={{ fontFamily:'var(--font-display)', fontSize:'clamp(2.8rem,6vw,4.2rem)', fontWeight:700, lineHeight:.88, letterSpacing:'-0.04em', color:'rgba(255,255,255,0.95)' }}>REVERSE<br/>THE<br/>MYTH</div>
-        <p style={{ margin:'20px 0 28px', fontFamily:'var(--font-body)', fontSize:'13px', color:'rgba(255,255,255,0.4)', lineHeight:1.6, maxWidth:'30ch' }}>A cinematic 3D experience that rewrites the rules of storytelling.</p>
-        <div style={{ display:'inline-flex', alignItems:'center', gap:'10px', padding:'10px 20px', borderRadius:'999px', border:'1px solid rgba(255,255,255,0.15)', fontFamily:'var(--font-mono)', fontSize:'12px', color:'rgba(255,255,255,0.7)', letterSpacing:'.08em' }}>Enter Experience ↗</div>
-      </div>
-      <div style={{ position:'absolute', right:'8%',  top:'22%',    width:'120px', height:'120px', border:'1px solid rgba(255,255,255,0.07)', borderRadius:'50%' }} />
-      <div style={{ position:'absolute', right:'18%', top:'38%',    width:'60px',  height:'60px',  border:'1px solid rgba(255,255,255,0.05)', transform:'rotate(45deg)' }} />
-      <div style={{ position:'absolute', right:'5%',  bottom:'18%', width:'80px',  height:'80px',  border:'1px solid rgba(255,255,255,0.06)', borderRadius:'50%' }} />
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/mythicreverse.png" 
+        alt="Mythic Reverse Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
+      />
     </div>
   );
 }
 
 function ShreshtaScreen() {
-  const stats = [['2,840','Users'],['98.2%','Uptime'],['47','Services']];
   return (
-    <div style={{ height:'100%', background:'linear-gradient(160deg,#1a1012,#0e0808)', display:'grid', gridTemplateRows:'auto 1fr', overflow:'hidden' }}>
-      <div style={{ padding:'14px 20px', borderBottom:'1px solid rgba(255,255,255,0.05)', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <span style={{ fontFamily:'var(--font-display)', fontSize:'16px', fontWeight:600, color:'rgba(255,255,255,0.85)', letterSpacing:'-0.02em' }}>SHRESHTA</span>
-        <div style={{ width:'28px', height:'28px', borderRadius:'50%', background:'rgba(255,255,255,0.08)' }} />
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'48px 1fr', overflow:'hidden' }}>
-        <div style={{ borderRight:'1px solid rgba(255,255,255,0.04)', display:'flex', flexDirection:'column', alignItems:'center', paddingTop:'20px', gap:'16px' }}>
-          {[...Array(4)].map((_,i)=><div key={i} style={{ width:'20px', height:'20px', borderRadius:'5px', background: i===0 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.04)' }} />)}
-        </div>
-        <div style={{ padding:'20px', overflow:'hidden' }}>
-          <div style={{ display:'flex', gap:'10px', marginBottom:'16px' }}>
-            {stats.map(([v,l])=>(
-              <div key={l} style={{ flex:1, background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.06)', borderRadius:'10px', padding:'12px 14px' }}>
-                <div style={{ fontFamily:'var(--font-display)', fontSize:'20px', fontWeight:600, color:'rgba(255,255,255,0.9)', letterSpacing:'-0.02em' }}>{v}</div>
-                <div style={{ fontFamily:'var(--font-mono)', fontSize:'10px', color:'rgba(255,255,255,0.3)', letterSpacing:'.08em', marginTop:'4px' }}>{l}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'10px' }}>
-            {['Activity Feed','Team Hub','Analytics','Settings'].map(t=>(
-              <div key={t} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.05)', borderRadius:'8px', padding:'14px', fontFamily:'var(--font-mono)', fontSize:'10px', color:'rgba(255,255,255,0.35)', letterSpacing:'.08em' }}>
-                {t}
-                <div style={{ height:'28px', background:'rgba(255,255,255,0.03)', borderRadius:'4px', marginTop:'10px' }} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/shreshta.png" 
+        alt="SHRESHTA Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
+      />
     </div>
   );
 }
@@ -214,11 +181,166 @@ function WorkPreview({ active }) {
   );
 }
 
+/* ── Project Details Popup Modal ────────────────────────────────────── */
+function ProjectModal({ projectIdx, onClose }) {
+  const modalOverlayRef = useRef(null);
+  const modalContentRef = useRef(null);
+
+  useEffect(() => {
+    if (projectIdx === null) return;
+    document.body.style.overflow = 'hidden';
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(modalOverlayRef.current, 
+        { opacity: 0 }, 
+        { opacity: 1, duration: 0.4, ease: 'power2.out' }
+      );
+      gsap.fromTo(modalContentRef.current, 
+        { opacity: 0, scale: 0.94, y: 40 }, 
+        { opacity: 1, scale: 1, y: 0, duration: 0.65, ease: 'power4.out', delay: 0.05 }
+      );
+      gsap.fromTo('.modal-reveal', 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out', delay: 0.2 }
+      );
+    });
+
+    return () => {
+      document.body.style.overflow = '';
+      ctx.revert();
+    };
+  }, [projectIdx]);
+
+  if (projectIdx === null) return null;
+  const p = WORK_PROJECTS[projectIdx];
+  const Sc = SCREENS[projectIdx];
+
+  const handleClose = () => {
+    gsap.to(modalContentRef.current, {
+      opacity: 0, scale: 0.94, y: 30, duration: 0.4, ease: 'power3.in',
+      onComplete: onClose
+    });
+    gsap.to(modalOverlayRef.current, {
+      opacity: 0, duration: 0.4, ease: 'power2.in'
+    });
+  };
+
+  return (
+    <div 
+      ref={modalOverlayRef}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        background: 'rgba(5, 5, 5, 0.85)',
+        backdropFilter: 'blur(20px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+        overflowY: 'auto'
+      }}
+      onClick={handleClose}
+    >
+      <div 
+        ref={modalContentRef}
+        className="grain-overlay"
+        style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: '800px',
+          background: '#0a0a0a',
+          borderRadius: '24px',
+          border: '1px solid var(--border-strong)',
+          boxShadow: '0 50px 100px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05)',
+          overflow: 'hidden',
+          cursor: 'default'
+        }}
+        onClick={e => e.stopPropagation()}
+      >
+        <button 
+          onClick={handleClose}
+          style={{
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.06)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: '#F5F5F5',
+            fontSize: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            zIndex: 10,
+            transition: 'all 0.3s var(--ease-out-expo)'
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
+            e.currentTarget.style.color = '#050505';
+            e.currentTarget.style.transform = 'scale(1.05)';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
+            e.currentTarget.style.color = '#F5F5F5';
+            e.currentTarget.style.transform = 'scale(1)';
+          }}
+        >
+          ✕
+        </button>
+
+        <div style={{ width: '100%', height: 'clamp(260px, 42vh, 440px)', borderBottom: '1px solid var(--border)', overflow: 'hidden', position: 'relative' }}>
+          <Sc />
+        </div>
+
+        <div style={{ padding: 'clamp(24px, 5vw, 40px)' }}>
+          <div className="modal-reveal" style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '.16em', color: 'rgba(255, 255, 255, 0.35)', textTransform: 'uppercase', marginBottom: '12px' }}>
+            {p.year} · {p.cat}
+          </div>
+          <h2 className="modal-reveal" style={{ margin: '0 0 16px', fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 600, lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
+            {p.n}
+          </h2>
+          <div className="modal-reveal" style={{ width: '40px', height: '2px', background: 'var(--accent)', marginBottom: '24px' }} />
+          <p className="modal-reveal" style={{ margin: '0 0 32px', fontFamily: 'var(--font-body)', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '68ch' }}>
+            {p.desc}
+          </p>
+          <div className="modal-reveal" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            {p.stack.map(s => (
+              <span key={s} style={{ 
+                fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '.08em',
+                padding: '6px 14px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.04)', 
+                border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)',
+                transition: 'all 0.3s'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                e.currentTarget.style.color = 'var(--text-primary)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.color = 'var(--text-secondary)';
+              }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── Single project row ─────────────────────────────────────────────── */
-function WorkRow({ p, i, active, onEnter, onLeave }) {
+function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
   const hov = active === i;
   return (
-    <div className="work-row" onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onEnter}
+    <div className="work-row" onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}
       style={{ display:'grid', gridTemplateColumns:'52px 1fr auto',
         gap:'clamp(12px,2vw,28px)',
         padding:'clamp(20px,2.8vw,34px) clamp(16px,2.4vw,32px)',
@@ -228,7 +350,7 @@ function WorkRow({ p, i, active, onEnter, onLeave }) {
         background: hov ? 'var(--bg-secondary)' : 'var(--bg-primary)',
         boxShadow: hov ? '0 30px 60px rgba(0,0,0,0.7)' : '0 10px 30px rgba(0,0,0,0.3)',
         transform: hov ? 'translateY(-2px)' : 'translateY(0)',
-        transition:'background .4s, border-color .4s, box-shadow .4s, transform .4s', cursor:'default' }}>
+        transition:'background .4s, border-color .4s, box-shadow .4s, transform .4s', cursor:'pointer' }}>
 
       <span style={{ fontFamily:'var(--font-mono)', fontSize:'12px', letterSpacing:'.1em', paddingTop:'6px',
         color: hov ? 'var(--text-secondary)' : 'var(--text-tertiary)', transition:'color .4s' }}>{p.idx}</span>
@@ -273,7 +395,37 @@ function WorkRow({ p, i, active, onEnter, onLeave }) {
 export default function Work() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [previewIdx, setPreviewIdx] = useState(null);
+  const [modalProject, setModalProject] = useState(null);
   const listRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 82%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      tl.fromTo('.work-eyebrow', { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' })
+        .fromTo('.work-title-char', { yPercent: 100 }, { yPercent: 0, duration: 1.0, stagger: 0.05, ease: 'power4.out' }, '-=0.6')
+        .fromTo('.work-meta', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6');
+
+      const rows = listRef.current.querySelectorAll('.work-row');
+      tl.fromTo(rows, 
+        { y: 50, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out', stagger: 0.12 }, 
+        '-=0.6'
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     const dismiss = () => setPreviewIdx(null);
@@ -281,33 +433,39 @@ export default function Work() {
     return () => window.removeEventListener('work-preview-dismiss', dismiss);
   }, []);
 
-  useEffect(() => {
-    if (!listRef.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const rows = listRef.current.querySelectorAll('.work-row');
-    gsap.fromTo(rows, { x:-50, opacity:0 },
-      { x:0, opacity:1, duration:1.0, ease:'power3.out', stagger:0.11,
-        scrollTrigger:{ trigger:listRef.current, start:'top 78%', toggleActions:'play none none none' } });
-  }, []);
-
   const p = WORK_PROJECTS[activeIdx];
 
+  const titleWords = ["SELECTED", "WORK"];
+
   return (
-    <div id="work" style={{ paddingTop:'var(--section-pad-y)', paddingBottom:'var(--section-pad-y)',
+    <div id="work" ref={containerRef} style={{ paddingTop:'var(--section-pad-y)', paddingBottom:'var(--section-pad-y)',
       paddingLeft:'var(--section-pad-x)', paddingRight:'var(--section-pad-x)' }}>
 
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end',
         marginBottom:'var(--space-9)', flexWrap:'wrap', gap:'16px' }}>
         <div>
-          <Eyebrow index="02">Portfolio</Eyebrow>
-          <h2 style={{ margin:'var(--space-5) 0 0', fontFamily:'var(--font-display)',
-            fontSize:'var(--fs-display)', fontWeight:600, lineHeight:0.92,
-            letterSpacing:'-0.03em', color:'var(--text-primary)' }}>SELECTED WORK</h2>
+          <div className="work-eyebrow" style={{ display: 'inline-block' }}>
+            <Eyebrow index="02">Portfolio</Eyebrow>
+          </div>
+          <h2 className="work-title" style={{ margin:'var(--space-5) 0 0', fontFamily:'var(--font-display)',
+            fontSize:'var(--fs-section)', fontWeight:600, lineHeight:0.92,
+            letterSpacing:'-0.03em', color:'var(--text-primary)', display: 'flex', flexWrap: 'wrap', gap: '0 0.25em', overflow: 'hidden' }}>
+            {titleWords.map((word, wordIdx) => (
+              <span key={wordIdx} style={{ display: 'flex', overflow: 'hidden' }}>
+                {word.split("").map((char, charIdx) => (
+                  <span key={charIdx} className="work-title-char" style={{ display: 'inline-block' }}>
+                    {char}
+                  </span>
+                ))}
+              </span>
+            ))}
+          </h2>
         </div>
-        <span style={{ fontFamily:'var(--font-mono)', fontSize:'12px', color:'var(--text-tertiary)',
+        <span className="work-meta" style={{ fontFamily:'var(--font-mono)', fontSize:'12px', color:'var(--text-tertiary)',
           letterSpacing:'.1em', paddingBottom:'8px' }}>— 04 PROJECTS</span>
       </div>
 
-      <div className="work-split" style={{ display:'grid', gridTemplateColumns:'1fr minmax(300px,0.72fr)',
+      <div className="work-split" style={{ display:'grid', gridTemplateColumns:'1fr minmax(360px,0.85fr)',
         gap:'clamp(32px,5vw,80px)', alignItems:'start' }}>
 
         {/* LEFT — project list */}
@@ -315,7 +473,8 @@ export default function Work() {
           {WORK_PROJECTS.map((proj, i) => (
             <WorkRow key={proj.n} p={proj} i={i} active={activeIdx}
               onEnter={() => { setActiveIdx(i); setPreviewIdx(i); }}
-              onLeave={() => setPreviewIdx(null)} />
+              onLeave={() => setPreviewIdx(null)}
+              onClick={() => setModalProject(i)} />
           ))}
           <div style={{ marginTop:'var(--space-7)' }}>
             <a href="#"
@@ -331,8 +490,10 @@ export default function Work() {
         </div>
 
         {/* RIGHT — sticky live screen preview */}
-        <div style={{ position:'sticky', top:'clamp(80px,10vh,120px)',
-          height:'clamp(340px,55vh,520px)', borderRadius:'18px', overflow:'hidden',
+        <div style={{ position:'sticky',
+          height:'clamp(400px, 62vh, 600px)',
+          top:'calc((100vh - clamp(400px, 62vh, 600px)) / 2)',
+          borderRadius:'18px', overflow:'hidden',
           border:'1px solid var(--border)', boxShadow:'0 40px 90px rgba(0,0,0,0.6)' }}>
           {SCREENS.map((Sc, i) => (
             <div key={i} style={{ position:'absolute', inset:0,
@@ -363,6 +524,7 @@ export default function Work() {
       </div>
 
       <WorkPreview active={previewIdx} />
+      <ProjectModal projectIdx={modalProject} onClose={() => setModalProject(null)} />
     </div>
   );
 }

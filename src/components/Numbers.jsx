@@ -41,12 +41,33 @@ export default function Numbers() {
   ];
   return (
     <div style={{ paddingTop:'var(--section-pad-y)', paddingBottom:'var(--section-pad-y)',
-      paddingLeft:'var(--section-pad-x)', paddingRight:'var(--section-pad-x)' }}>
-      <Eyebrow index="05">By the numbers</Eyebrow>
-      <h2 style={{ margin:'var(--space-5) 0 var(--space-10)', fontFamily:'var(--font-display)', fontSize:'var(--fs-display)',
-        fontWeight:600, lineHeight:0.92, letterSpacing:'-0.03em', color:'var(--text-primary)' }}>NUMBERS</h2>
-      <div className="numbers-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'clamp(24px,4vw,60px)' }}>
-        {stats.map(s=><Counter key={s.label} {...s} />)}
+      paddingLeft:'var(--section-pad-x)', paddingRight:'var(--section-pad-x)', position: 'relative' }}>
+      
+      {/* ── bg decorations to match Stack section brightness ── */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', top: '10%', left: '-10%',
+        width: '600px', height: '600px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(184,168,197,0.035) 0%, transparent 70%)',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+      <div aria-hidden="true" style={{
+        position: 'absolute', bottom: '10%', right: '-5%',
+        width: '500px', height: '500px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(184,168,197,0.035) 0%, transparent 70%)',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Eyebrow index="05">By the numbers</Eyebrow>
+        <h2 style={{ margin:'var(--space-5) 0 var(--space-10)', fontFamily:'var(--font-display)', fontSize:'var(--fs-section)',
+          fontWeight:600, lineHeight:0.92, letterSpacing:'-0.03em', color:'var(--text-primary)' }}>NUMBERS</h2>
+        <div className="numbers-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'clamp(24px,4vw,60px)' }}>
+          {stats.map(s=><Counter key={s.label} {...s} />)}
+        </div>
       </div>
     </div>
   );

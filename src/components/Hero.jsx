@@ -80,36 +80,6 @@ export default function Hero() {
         1.6
       );
 
-      // 8. Grey floating particles
-      const pc = document.getElementById('hero-particles');
-      if (pc) {
-        for (let i = 0; i < 28; i++) {
-          const d = document.createElement('span');
-          const size = Math.random() * 1.5 + 1;
-          const alpha = Math.random() * 0.18 + 0.06;
-          Object.assign(d.style, {
-            position: 'absolute',
-            width: size + 'px',
-            height: size + 'px',
-            borderRadius: '50%',
-            background: `rgba(160,160,165,${alpha})`,
-            left: Math.random() * 100 + '%',
-            top: Math.random() * 100 + '%',
-            pointerEvents: 'none',
-          });
-          pc.appendChild(d);
-          gsap.to(d, {
-            y: (Math.random() - 0.5) * 140,
-            x: (Math.random() - 0.5) * 100,
-            opacity: Math.random() * 0.2 + 0.05,
-            duration: Math.random() * 10 + 10,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            delay: Math.random() * 8,
-          });
-        }
-      }
     }, containerRef);
 
     return () => ctx.revert();

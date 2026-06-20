@@ -5,7 +5,7 @@ export default function Education() {
     <div style={{ paddingTop:'var(--section-pad-y)', paddingBottom:'var(--section-pad-y)',
       paddingLeft:'var(--section-pad-x)', paddingRight:'var(--section-pad-x)' }}>
       <Eyebrow index="06">Background</Eyebrow>
-      <h2 style={{ margin:'var(--space-5) 0 var(--space-9)', fontFamily:'var(--font-display)', fontSize:'var(--fs-display)',
+      <h2 style={{ margin:'var(--space-5) 0 var(--space-9)', fontFamily:'var(--font-display)', fontSize:'var(--fs-section)',
         fontWeight:600, lineHeight:0.92, letterSpacing:'-0.03em', color:'var(--text-primary)' }}>EDUCATION</h2>
       <div style={{ borderTop:'1px solid var(--border)', paddingTop:'var(--space-7)',
         display:'grid', gridTemplateColumns:'1.2fr 1fr', gap:'clamp(30px,6vw,90px)', alignItems:'start' }}>

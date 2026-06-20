@@ -40,6 +40,29 @@ export default function App() {
         gsap.to('.fog-a', { xPercent:12, yPercent:-8, duration:18, repeat:-1, yoyo:true, ease:'sine.inOut' });
         gsap.to('.fog-b', { xPercent:-14, yPercent:6, duration:22, repeat:-1, yoyo:true, ease:'sine.inOut' });
         gsap.to('.godray', { opacity:0.55, duration:6, repeat:-1, yoyo:true, ease:'sine.inOut' });
+
+        /* global grey floating particles — fixed overlay spans the full page */
+        const gpc = document.getElementById('global-particles');
+        if (gpc) {
+          for (let i = 0; i < 60; i++) {
+            const d = document.createElement('span');
+            const size = Math.random() * 1.5 + 1;
+            const alpha = Math.random() * 0.18 + 0.06;
+            Object.assign(d.style, {
+              position:'absolute', width:size+'px', height:size+'px',
+              borderRadius:'50%', background:`rgba(160,160,165,${alpha})`,
+              left:Math.random()*100+'%', top:Math.random()*100+'%',
+              pointerEvents:'none',
+            });
+            gpc.appendChild(d);
+            gsap.to(d, {
+              y:(Math.random()-.5)*140, x:(Math.random()-.5)*100,
+              opacity:Math.random()*0.2+0.05,
+              duration:Math.random()*10+10,
+              repeat:-1, yoyo:true, ease:'sine.inOut', delay:Math.random()*8,
+            });
+          }
+        }
       }
 
       /* pinned hero reveal */
@@ -121,6 +144,7 @@ export default function App() {
         {/* Dim the bright top-right corner a little bit */}
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 90% 10%, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0) 50%)' }} />
       </div>
+      <div id="global-particles" style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:50, overflow:'hidden' }} />
       <Navbar />
       <section className="hero-sticky">
         <Hero />
