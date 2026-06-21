@@ -96,7 +96,7 @@ export default function About() {
 
       tl.fromTo('.about-eyebrow', { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' })
         .fromTo('.about-title-char', { yPercent: 100 }, { yPercent: 0, duration: 1.0, stagger: 0.08, ease: 'power4.out' }, '-=0.6')
-        .fromTo('.about-desc-word', { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.03, ease: 'power3.out' }, '-=0.6');
+        .fromTo('.about-desc-word', { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.5, stagger: 0.01, ease: 'power3.out' }, '-=0.6');
 
       // Infinite floating animations (yoyo loops)
       gsap.to('.ac-left-float', {

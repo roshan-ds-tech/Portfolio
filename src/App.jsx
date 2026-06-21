@@ -11,7 +11,6 @@ import Expertise from './components/Expertise';
 import Numbers from './components/Numbers';
 import Education from './components/Education';
 import Contact from './components/Contact';
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
@@ -146,19 +145,19 @@ export default function App() {
       </div>
       <div id="global-particles" style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:50, overflow:'hidden' }} />
       <Navbar />
-      <section className="hero-sticky">
+      <section id="hero" className="hero-sticky">
         <Hero />
         {/* Scroll-driven bottom fade — opacity controlled by GSAP, starts at 0 */}
         <div className="hero-fade-bottom" />
       </section>
       <main className="content">
-        <section className="sec sec-about" data-reveal><About /></section>
-        <section className="sec" data-reveal><Work /></section>
-        <section className="sec"><Journey /></section>
-        <section className="sec" data-reveal><Expertise /></section>
-        <section className="sec" data-reveal><Numbers /></section>
-        <section className="sec" data-reveal><Education /></section>
-        <section className="sec"><Contact /></section>
+        <section id="about" className="sec sec-about" data-reveal><About /></section>
+        <section id="work" className="sec" data-reveal><Work /></section>
+        <section id="journey" className="sec"><Journey /></section>
+        <section id="expertise" className="sec" data-reveal><Expertise /></section>
+        <section id="numbers" className="sec" data-reveal><Numbers /></section>
+        <section id="education" className="sec" data-reveal><Education /></section>
+        <section id="contact" className="sec" data-reveal><Contact /></section>
       </main>
     </>
   );

@@ -17,13 +17,13 @@ export default function Navbar() {
   });
 
   const topNavTabs = [
-    { title: 'Home', icon: Home },
+    { title: 'Home', icon: Home, id: 'hero' },
     { type: 'separator' },
-    { title: 'About', icon: User },
+    { title: 'About', icon: User, id: 'about' },
     { type: 'separator' },
-    { title: 'Work', icon: Briefcase },
+    { title: 'Work', icon: Briefcase, id: 'work' },
     { type: 'separator' },
-    { title: 'Contact', icon: Mail },
+    { title: 'Contact', icon: Mail, id: 'contact' },
   ];
 
   return (
@@ -45,7 +45,19 @@ export default function Navbar() {
         pointerEvents: hidden ? 'none' : 'auto',
       }}
     >
-      <ExpandableTabs tabs={topNavTabs} />
+      <ExpandableTabs 
+        tabs={topNavTabs} 
+        onChange={(index) => {
+          if (index === null) return;
+          const tab = topNavTabs[index];
+          if (tab && tab.id) {
+            const el = document.getElementById(tab.id);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }}
+      />
     </motion.div>
   );
 }

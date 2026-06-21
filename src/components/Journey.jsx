@@ -103,7 +103,7 @@ export default function Journey() {
         // Alternate animation direction based on left/right side
         const xOffset = isLeft ? -50 : 50;
 
-        tl.fromTo(year,  { opacity: 0, scale: 0.8 }, { opacity: 0.15, scale: 1, duration: 0.8, ease: 'power3.out' })
+        tl.fromTo(year,  { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' })
           .fromTo(node,  { scale: 0 },            { scale: 1, duration: 0.5, ease: 'back.out(2)' }, '-=0.6')
           .fromTo(inner, { opacity: 0, x: xOffset, y: 30 }, { opacity: 1, x: 0, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.4')
           .fromTo(tag,   { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' }, '-=0.35')
@@ -192,8 +192,8 @@ export default function Journey() {
           background: rgba(255, 255, 255, 0.05);
           z-index: 1;
         }
-        .jrn-connector.left { right: 45%; }
-        .jrn-connector.right { left: 45%; }
+        .jrn-connector.left { left: 45%; right: auto; }
+        .jrn-connector.right { right: 45%; left: auto; }
         
         .jrn-year {
           position: absolute;
@@ -201,13 +201,19 @@ export default function Journey() {
           font-size: clamp(6rem, 12vw, 10rem);
           font-weight: 800;
           line-height: 1;
-          color: rgba(255, 255, 255, 0.15); /* More visible watermark */
+          color: rgba(255, 255, 255, 0.15); /* Old dark grey color */
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2); /* Faint border by default */
           user-select: none;
           z-index: 0;
-          pointer-events: none;
+          pointer-events: auto; /* Enable hovering */
+          transition: all 0.3s ease;
         }
-        .jrn-year.left { right: 48%; text-align: right; }
-        .jrn-year.right { left: 48%; text-align: left; }
+        .jrn-year:hover {
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5); /* Brighter border on hover */
+          text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Glow on hover */
+        }
+        .jrn-year.left { left: 52%; text-align: left; right: auto; }
+        .jrn-year.right { right: 52%; text-align: right; left: auto; }
 
         @media (max-width: 900px) {
           .jrn-spine {
