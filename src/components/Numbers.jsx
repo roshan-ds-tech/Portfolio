@@ -63,8 +63,8 @@ function NumberCard({ value, suffix, desc, index, startCount }) {
         borderRadius: '24px',
         padding: '36px 36px 32px',
         boxShadow: hovered
-          ? 'var(--glow-accent), 0 40px 90px rgba(0,0,0,0.65), var(--inset-top)'
-          : '0 24px 60px rgba(0,0,0,0.45), var(--inset-top)',
+          ? `var(--glow-accent), var(--card-shadow-hover), var(--inset-top)`
+          : `var(--card-shadow), var(--inset-top)`,
         transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
         transition: 'transform var(--dur-base) var(--ease-out-expo), box-shadow var(--dur-base) var(--ease-out-expo), background var(--dur-base), border-color var(--dur-base)',
         display: 'flex',

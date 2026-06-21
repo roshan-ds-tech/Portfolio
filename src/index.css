@@ -12,6 +12,104 @@
   --glow-accent: 0 0 0 1px rgba(255,255,255,0.28), 0 0 28px rgba(255,255,255,0.18);
   --text-inverse: #050505;
   --bg-card: #151515;
+
+  /* ── Expertise Hover ── */
+  --exp-hover-bg: #e6e6e6;
+  --exp-hover-text: #1a1a1a;
+  --exp-hover-text-muted: #666666;
+  --exp-hover-border: rgba(0,0,0,0.1);
+  --exp-badge-bg: rgba(0,0,0,0.04);
+  --exp-badge-bg-hover: rgba(0,0,0,0.08);
+  --exp-badge-border: rgba(0,0,0,0.08);
+
+  /* ── Terminal ── */
+  --terminal-color: #39FF14;
+  --hero-name-shadow: 0 8px 32px rgba(0,0,0,0.6);
+
+  /* ── Button ── */
+  --btn-primary-bg: #FFFFFF;
+  --btn-primary-color: #050505;
+  --btn-primary-border: #FFFFFF;
+  --btn-primary-hover-bg: #D4D4D4;
+  --btn-secondary-border: var(--border-strong);
+  --btn-secondary-color: var(--text-primary);
+  --btn-secondary-hover-bg: transparent;
+  --btn-secondary-hover-border: var(--accent);
+  --btn-secondary-hover-color: var(--accent);
+
+  /* ── Glass cards ── */
+  --glass-bg: rgba(15,15,15,0.6);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-hover-bg: rgba(20,20,20,0.8);
+  --glass-hover-border: rgba(255,255,255,0.15);
+
+  /* ── Journey ── */
+  --jrn-spine: rgba(255,255,255,0.05);
+  --jrn-connector: rgba(255,255,255,0.05);
+  --jrn-node-bg: #0d0d0d;
+  --jrn-node-border: rgba(255,255,255,0.1);
+  --jrn-year-color: rgba(255,255,255,0.15);
+  --jrn-year-stroke: rgba(255,255,255,0.2);
+  --jrn-year-hover-stroke: rgba(255,255,255,0.5);
+  --jrn-year-hover-shadow: rgba(255,255,255,0.3);
+  --jrn-title: rgba(255,255,255,0.95);
+  --jrn-body: rgba(255,255,255,0.6);
+  --jrn-year-meta: rgba(255,255,255,0.4);
+  --jrn-divider: rgba(255,255,255,0.1);
+  --jrn-progress-track: rgba(255,255,255,0.05);
+  --jrn-tag-color: rgba(255,255,255,0.8);
+  --jrn-tag-bg: rgba(255,255,255,0.05);
+  --jrn-tag-border: rgba(255,255,255,0.1);
+  --jrn-icon-bg: rgba(255,255,255,0.03);
+  --jrn-icon-border: rgba(255,255,255,0.05);
+  --jrn-progress-grad: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 100%);
+  --jrn-progress-glow: rgba(255,255,255,0.5);
+
+  /* ── Education ── */
+  --edu-card-bg:      rgba(255,255,255,0.03);
+  --edu-card-border:  rgba(255,255,255,0.08);
+  --edu-accent-line:  rgba(255,255,255,0.1);
+  --edu-badge-bg:     rgba(255,255,255,0.05);
+  --edu-badge-border: rgba(255,255,255,0.08);
+  --edu-badge-color:  #A0A0A0;
+  --edu-badge-icon:   rgba(255,255,255,0.4);
+  --edu-divider:      rgba(255,255,255,0.08);
+  --edu-tab-bg:       var(--accent-dim);
+  --edu-tab-shadow:   var(--accent-glow);
+  --edu-tab-text:     #1a1a1a;
+
+  /* ── Contact ── */
+  --contact-ft-border: rgba(255,255,255,0.05);
+  --contact-card-bg: rgba(15,15,15,0.4);
+  --contact-card-border: rgba(255,255,255,0.08);
+  --contact-icon-bg: rgba(255,255,255,0.03);
+  --contact-icon-border: rgba(255,255,255,0.1);
+  --contact-arrow: rgba(255,255,255,0.3);
+  --contact-avatar-border: rgba(255,255,255,0.1);
+  --back-top-bg: rgba(255,255,255,0.05);
+  --back-top-border: rgba(255,255,255,0.1);
+  --contact-atm: radial-gradient(ellipse at bottom, rgba(255,255,255,0.05) 0%, transparent 70%);
+  --contact-marquee-stroke: white;
+  --contact-footer-border: rgba(255,255,255,0.05);
+
+  /* ── Work modal ── */
+  --modal-overlay-bg: rgba(5,5,5,0.85);
+  --modal-card-bg: #0a0a0a;
+  --modal-meta-color: rgba(255,255,255,0.35);
+  --modal-tag-bg: rgba(255,255,255,0.04);
+  --modal-tag-border: rgba(255,255,255,0.08);
+  --modal-close-bg: rgba(255,255,255,0.06);
+  --modal-close-border: rgba(255,255,255,0.1);
+  --modal-close-color: #F5F5F5;
+  --work-row-stack-bg: rgba(255,255,255,0.03);
+  --work-row-stack-bg-hov: rgba(255,255,255,0.07);
+  --work-row-arrow-color: #050505;
+  --work-link-hover-border: rgba(255,255,255,0.4);
+  --work-preview-border: rgba(255,255,255,0.09);
+
+  /* ── Card shadows ── */
+  --card-shadow:       0 24px 60px rgba(0,0,0,0.45);
+  --card-shadow-hover: 0 40px 90px rgba(0,0,0,0.65);
 }
 
 *{box-sizing:border-box}
@@ -196,4 +294,205 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
 .tab-active {
   background: var(--bg-elevated);
   color: var(--accent);
+}
+
+/* ================================================================
+   LIGHT THEME — [data-theme="light"]
+   ================================================================ */
+[data-theme="light"] {
+  /* ── Core color ramp ── */
+  --bg-primary:    #F8F6F2;
+  --bg-secondary:  #F3EFE8;
+  --bg-tertiary:   #ECE7DD;
+  --bg-card:       rgba(255,255,255,0.85);
+  --bg-elevated:   #FFFFFF;
+
+  /* ── Expertise Hover ── */
+  --exp-hover-bg: #1c1c1e;
+  --exp-hover-text: #ffffff;
+  --exp-hover-text-muted: #a0a0a0;
+  --exp-hover-border: rgba(255,255,255,0.15);
+  --exp-badge-bg: rgba(255,255,255,0.05);
+  --exp-badge-bg-hover: rgba(255,255,255,0.1);
+  --exp-badge-border: rgba(255,255,255,0.15);
+
+  /* ── Borders ── */
+  --border:        rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.14);
+  --border-faint:  rgba(0,0,0,0.04);
+
+  /* ── Text ── */
+  --text-primary:   #1E1E1E;
+  --text-secondary: #4A4A4A;
+  --text-tertiary:  #767676;
+  --text-inverse:   #F8F6F2;
+
+  /* ── Accent: champagne gold ── */
+  --accent:         #C8A97E;
+  --accent-dim:     #D8BC96;
+  --accent-soft:    rgba(200,169,126,0.12);
+  --accent-glow:    rgba(200,169,126,0.25);
+  --glow-accent:    0 0 0 1px rgba(200,169,126,0.3), 0 0 28px rgba(200,169,126,0.15);
+  --glow-soft:      0 0 40px rgba(200,169,126,0.1);
+  --inset-top:      inset 0 1px 0 rgba(255,255,255,0.6);
+
+  /* ── Links ── */
+  --link:       #3D8B6D;
+  --link-hover: #2E8B57;
+
+  /* ── Shadows (lighter for light bg) ── */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:   0 12px 32px rgba(0,0,0,0.1);
+  --shadow-lg:   0 30px 70px rgba(0,0,0,0.12);
+  --shadow-xl:   0 50px 120px rgba(0,0,0,0.15);
+  --shadow-card: 0 24px 60px rgba(0,0,0,0.1);
+
+  /* ── Atmospheric ── */
+  --grad-top-light: transparent;
+  --grad-vignette:  radial-gradient(120% 90% at 50% 40%, rgba(255,255,255,0) 55%, rgba(0,0,0,0.04) 100%);
+
+  /* ── Terminal ── */
+  --terminal-color:   #2E8B57;
+  --hero-name-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+  /* ── Buttons ── */
+  --btn-primary-bg:          #1E1E1E;
+  --btn-primary-color:       #FFFFFF;
+  --btn-primary-border:      #1E1E1E;
+  --btn-primary-hover-bg:    #333333;
+  --btn-secondary-border:    var(--accent);
+  --btn-secondary-color:     #1E1E1E;
+  --btn-secondary-hover-bg:  var(--accent);
+  --btn-secondary-hover-border: var(--accent);
+  --btn-secondary-hover-color: #FFFFFF;
+
+  /* ── Glass cards ── */
+  --glass-bg:           rgba(255,255,255,0.7);
+  --glass-border:       rgba(0,0,0,0.08);
+  --glass-hover-bg:     rgba(255,255,255,0.85);
+  --glass-hover-border: rgba(0,0,0,0.12);
+
+  /* ── Journey ── */
+  --jrn-spine:             rgba(0,0,0,0.08);
+  --jrn-connector:         rgba(0,0,0,0.08);
+  --jrn-node-bg:           #F8F6F2;
+  --jrn-node-border:       rgba(0,0,0,0.12);
+  --jrn-year-color:        rgba(0,0,0,0.12);
+  --jrn-year-stroke:       transparent;
+  --jrn-year-hover-stroke: rgba(0,0,0,0.3);
+  --jrn-year-hover-shadow: rgba(0,0,0,0.1);
+  --jrn-title:             #1E1E1E;
+  --jrn-body:              #4A4A4A;
+  --jrn-year-meta:         rgba(0,0,0,0.4);
+  --jrn-divider:           rgba(0,0,0,0.08);
+  --jrn-progress-track:    rgba(0,0,0,0.08);
+  --jrn-tag-color:         #4A4A4A;
+  --jrn-tag-bg:            rgba(0,0,0,0.04);
+  --jrn-tag-border:        rgba(0,0,0,0.1);
+  --jrn-icon-bg:           rgba(0,0,0,0.04);
+  --jrn-icon-border:       rgba(0,0,0,0.06);
+  --jrn-progress-grad:     linear-gradient(to bottom, rgba(200,169,126,0.9) 0%, rgba(200,169,126,0.2) 100%);
+  --jrn-progress-glow:     rgba(200,169,126,0.4);
+
+  /* ── Education ── */
+  --edu-card-bg:      rgba(255,255,255,0.7);
+  --edu-card-border:  rgba(0,0,0,0.08);
+  --edu-accent-line:  rgba(200,169,126,0.4);
+  --edu-badge-bg:     rgba(0,0,0,0.04);
+  --edu-badge-border: rgba(0,0,0,0.06);
+  --edu-badge-color:  #4A4A4A;
+  --edu-badge-icon:   rgba(0,0,0,0.3);
+  --edu-divider:      rgba(0,0,0,0.15);
+  --edu-tab-bg:       rgba(0,0,0,0.12);
+  --edu-tab-shadow:   rgba(0,0,0,0.05);
+  --edu-tab-text:     #1E1E1E;
+
+  /* ── Contact ── */
+  --contact-ft-border:     rgba(0,0,0,0.06);
+  --contact-card-bg:       rgba(255,255,255,0.65);
+  --contact-card-border:   rgba(0,0,0,0.08);
+  --contact-icon-bg:       rgba(0,0,0,0.04);
+  --contact-icon-border:   rgba(0,0,0,0.08);
+  --contact-arrow:         rgba(0,0,0,0.25);
+  --contact-avatar-border: rgba(0,0,0,0.12);
+  --back-top-bg:           rgba(0,0,0,0.05);
+  --back-top-border:       rgba(0,0,0,0.1);
+  --contact-atm:           radial-gradient(ellipse at bottom, rgba(200,169,126,0.08) 0%, transparent 70%);
+  --contact-marquee-stroke: rgba(0,0,0,0.15);
+  --contact-footer-border: rgba(0,0,0,0.06);
+
+  /* ── Work modal ── */
+  --modal-overlay-bg:   rgba(240,235,228,0.88);
+  --modal-card-bg:      #FFFFFF;
+  --modal-meta-color:   rgba(0,0,0,0.4);
+  --modal-tag-bg:       rgba(0,0,0,0.04);
+  --modal-tag-border:   rgba(0,0,0,0.08);
+  --modal-close-bg:     rgba(0,0,0,0.06);
+  --modal-close-border: rgba(0,0,0,0.1);
+  --modal-close-color:  #1E1E1E;
+  --work-row-stack-bg:     rgba(0,0,0,0.03);
+  --work-row-stack-bg-hov: rgba(0,0,0,0.07);
+  --work-row-arrow-color:  #F8F6F2;
+  --work-link-hover-border: rgba(0,0,0,0.4);
+  --work-preview-border:   rgba(0,0,0,0.09);
+
+  /* ── Card shadows ── */
+  --card-shadow:       0 20px 50px rgba(0,0,0,0.08);
+  --card-shadow-hover: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* ── Light theme: body & page background ── */
+[data-theme="light"] body {
+  background: var(--bg-primary);
+}
+
+/* ── Light theme: hero fade-bottom gradient ── */
+[data-theme="light"] .hero-fade-bottom {
+  display: none;
+}
+
+/* ── Light theme: content section ── */
+[data-theme="light"] .content {
+  background-color: #F8F6F2;
+  background-image: url('/images/white_fog.png');
+  box-shadow: 0 -30px 60px 5px rgba(0,0,0,0.12);
+}
+[data-theme="light"] .content::before {
+  background: rgba(248,246,242,0.5);
+}
+[data-theme="light"] .content::after {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.06) 0%, transparent 100%);
+}
+
+/* ── Light theme: scrollbar ── */
+[data-theme="light"] ::-webkit-scrollbar-track { background: #F8F6F2; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #C8C0B0; border-color: #F8F6F2; }
+
+/* ── Light theme: selection ── */
+[data-theme="light"] ::selection { background: var(--accent); color: #FFFFFF; }
+
+/* ── Light theme: navbar tabs ── */
+[data-theme="light"] .expandable-tabs-container {
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  backdrop-filter: blur(20px);
+}
+[data-theme="light"] .tab-inactive        { color: var(--text-secondary); }
+[data-theme="light"] .tab-inactive:hover  { background: rgba(0,0,0,0.05); color: var(--text-primary); }
+[data-theme="light"] .tab-active          { background: rgba(0,0,0,0.06); color: var(--text-primary); }
+[data-theme="light"] .tab-separator       { background: rgba(0,0,0,0.1); }
+
+/* ── Light theme: nav indicator ── */
+[data-theme="light"] .nav-ind:hover svg { stroke: var(--accent); }
+
+/* ── Light theme: contact card hover ── */
+[data-theme="light"] .contact-card:hover {
+  background: rgba(255,255,255,0.85) !important;
+  border-color: rgba(200,169,126,0.35) !important;
+  box-shadow: var(--glow-accent), 0 30px 60px rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] .back-to-top:hover {
+  background: #1E1E1E !important;
+  color: #F8F6F2 !important;
 }

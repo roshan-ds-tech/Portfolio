@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:claude.ai)",
       "Bash(git checkout *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(npm run *)"
     ]
   }
 }

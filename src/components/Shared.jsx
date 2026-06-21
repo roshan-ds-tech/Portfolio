@@ -22,13 +22,13 @@ export function MagneticButton({ children, variant='primary', href='#', ...rest 
   };
   const reset = () => { ref.current.style.transform = 'translate(0,0)'; };
   const styles = {
-    primary:{ background:'var(--accent)', color:'var(--text-inverse)', border:'1px solid var(--accent)' },
-    secondary:{ background:'transparent', color:'var(--text-primary)', border:'1px solid var(--border-strong)' },
+    primary:{ background:'var(--btn-primary-bg)', color:'var(--btn-primary-color)', border:'1px solid var(--btn-primary-border)' },
+    secondary:{ background:'transparent', color:'var(--btn-secondary-color)', border:'1px solid var(--btn-secondary-border)' },
   };
   const [hover,setHover] = useState(false);
   const hv = variant==='primary'
-    ? (hover?{ background:'var(--accent-dim)', boxShadow:'var(--glow-accent)' }:{})
-    : (hover?{ borderColor:'var(--accent)', color:'var(--accent)' }:{});
+    ? (hover?{ background:'var(--btn-primary-hover-bg)', boxShadow:'var(--glow-accent)' }:{})
+    : (hover?{ background:'var(--btn-secondary-hover-bg)', borderColor:'var(--btn-secondary-hover-border)', color:'var(--btn-secondary-hover-color)' }:{});
   return (
     <a ref={ref} href={href} onMouseMove={onMove}
        onMouseEnter={()=>setHover(true)} onMouseLeave={()=>{reset();setHover(false);}}

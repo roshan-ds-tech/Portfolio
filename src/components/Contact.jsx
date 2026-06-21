@@ -47,20 +47,20 @@ export default function Contact() {
   };
 
   return (
-    <footer ref={containerRef} style={{ 
-      position: 'relative', 
-      paddingTop: 'var(--space-12)', 
-      paddingBottom: 'var(--space-6)', 
-      paddingLeft: 'var(--section-pad-x)', 
-      paddingRight: 'var(--section-pad-x)', 
+    <footer ref={containerRef} style={{
+      position: 'relative',
+      paddingTop: 'var(--space-12)',
+      paddingBottom: 'var(--space-6)',
+      paddingLeft: 'var(--section-pad-x)',
+      paddingRight: 'var(--section-pad-x)',
       overflow: 'hidden',
-      borderTop: '1px solid rgba(255,255,255,0.05)'
+      borderTop: '1px solid var(--contact-ft-border)'
     }}>
       {/* Background Atmosphere */}
       <div aria-hidden="true" style={{
         position: 'absolute', bottom: '-20%', left: '50%', transform: 'translateX(-50%)',
         width: '80vw', height: '50vh',
-        background: 'radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%)',
+        background: 'var(--contact-atm)',
         pointerEvents: 'none',
         zIndex: 0
       }} />
@@ -76,10 +76,10 @@ export default function Contact() {
           transition={{ ease: "linear", duration: 30, repeat: Infinity }}
           style={{ display: 'flex', gap: '2rem' }}
         >
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '15vw', fontWeight: 800, WebkitTextStroke: '1px white', color: 'transparent' }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '15vw', fontWeight: 800, WebkitTextStroke: '1px var(--contact-marquee-stroke)', color: 'transparent' }}>
             LET'S WORK TOGETHER — LET'S WORK TOGETHER — 
           </span>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '15vw', fontWeight: 800, WebkitTextStroke: '1px white', color: 'transparent' }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '15vw', fontWeight: 800, WebkitTextStroke: '1px var(--contact-marquee-stroke)', color: 'transparent' }}>
             LET'S WORK TOGETHER — LET'S WORK TOGETHER — 
           </span>
         </motion.div>
@@ -121,7 +121,7 @@ export default function Contact() {
           }}
         >
           {links.map((l) => (
-            <motion.a 
+            <motion.a
               key={l.t}
               href={l.h}
               target={l.ext ? "_blank" : undefined}
@@ -131,10 +131,10 @@ export default function Contact() {
               whileTap={{ scale: 0.98 }}
               className="contact-card"
               style={{
-                background: 'rgba(15, 15, 15, 0.4)',
+                background: 'var(--contact-card-bg)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                border: '1px solid var(--contact-card-border)',
                 borderRadius: '24px',
                 padding: '32px 24px',
                 display: 'flex',
@@ -143,21 +143,21 @@ export default function Contact() {
                 textDecoration: 'none',
                 position: 'relative',
                 overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
                 transition: 'border-color 0.3s, background 0.3s'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '32px' }}>
                 <div style={{
                   width: '48px', height: '48px', borderRadius: '12px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'var(--contact-icon-bg)',
+                  border: '1px solid var(--contact-icon-border)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'var(--text-primary)'
                 }}>
                   <l.icon size={24} strokeWidth={1.5} />
                 </div>
-                <ArrowUpRight size={20} color="rgba(255,255,255,0.3)" className="arrow-icon" style={{ transition: 'color 0.3s, transform 0.3s' }} />
+                <ArrowUpRight size={20} color="var(--contact-arrow)" className="arrow-icon" style={{ transition: 'color 0.3s, transform 0.3s' }} />
               </div>
               
               <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 600, color: 'var(--text-primary)' }}>
@@ -180,12 +180,12 @@ export default function Contact() {
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: '24px',
-            borderTop: '1px solid rgba(255,255,255,0.05)',
+            borderTop: '1px solid var(--contact-footer-border)',
             paddingTop: 'var(--space-6)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', border: '1px solid var(--contact-avatar-border)' }}>
               <img src="/images/roshan.png" alt="Roshan DS" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -198,12 +198,12 @@ export default function Contact() {
             © {new Date().getFullYear()} — <span style={{ color: 'var(--accent)' }}>&gt;_</span> crafted with intent
           </p>
 
-          <button 
+          <button
             onClick={scrollToTop}
             className="back-to-top"
             style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'var(--back-top-bg)',
+              border: '1px solid var(--back-top-border)',
               borderRadius: '999px',
               padding: '12px 24px',
               color: 'var(--text-primary)',
@@ -236,6 +236,7 @@ export default function Contact() {
           color: var(--text-inverse) !important;
         }
       `}</style>
+      {/* Light-theme overrides for .contact-card:hover are in index.css via [data-theme="light"] selectors */}
     </footer>
   );
 }

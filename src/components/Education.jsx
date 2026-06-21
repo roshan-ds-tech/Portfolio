@@ -68,32 +68,31 @@ export default function Education() {
               className="pointer-events-none" 
               style={{
                 position: 'absolute', left: 0, right: 0, bottom: '-40px', top: '72%',
-                borderRadius: '28px', background: 'rgba(230, 230, 230, 0.95)',
-                boxShadow: '0 20px 40px -16px rgba(230, 230, 230, 0.5)',
+                borderRadius: '28px', background: 'var(--edu-tab-bg)',
+                boxShadow: '0 20px 40px -16px var(--edu-tab-shadow)',
                 zIndex: 0
               }}
             />
             <div style={{ position: 'absolute', left: 0, right: 0, bottom: '-40px', zIndex: 0 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '14px', fontWeight: 600, color: '#1a1a1a' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '14px', fontWeight: 600, color: 'var(--edu-tab-text)' }}>
                 B.E Computer Science
               </div>
             </div>
 
             {/* Stunning Glassmorphism Card */}
-            <div 
+            <div
               className="edu-card-inner"
               style={{
-                background: 'rgba(15, 15, 15, 0.6)',
+                background: 'var(--edu-card-bg)',
                 backdropFilter: 'blur(30px)',
                 WebkitBackdropFilter: 'blur(30px)',
-                border: '1px solid rgba(255, 255, 255, 0.06)',
+                border: '1px solid var(--edu-card-border)',
                 borderRadius: '32px',
                 padding: 'clamp(30px, 5vw, 60px)',
                 display: 'grid',
                 gridTemplateColumns: '1fr auto',
                 gap: '40px',
                 alignItems: 'center',
-                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02)',
                 position: 'relative',
                 overflow: 'hidden',
                 zIndex: 10
@@ -102,21 +101,20 @@ export default function Education() {
             {/* Top Accent Line */}
             <div style={{
               position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px',
-              background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent)'
+              background: `linear-gradient(90deg, transparent, var(--edu-accent-line), transparent)`
             }} />
 
             <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
               {/* Floating Icon Container */}
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 style={{
                   width: '72px', height: '72px', borderRadius: '20px',
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  background: 'var(--glass-bg)',
+                  border: '1px solid var(--glass-border)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'var(--text-primary)',
                   flexShrink: 0,
-                  boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.02), 0 10px 20px rgba(0,0,0,0.1)'
                 }}
               >
                 <GraduationCap size={36} strokeWidth={1.5} />
@@ -137,29 +135,29 @@ export default function Education() {
                   <div style={{
                     display: 'flex', alignItems: 'center', gap: '8px',
                     fontFamily: 'var(--font-mono)', fontSize: '13px',
-                    color: 'rgba(255,255,255,0.6)',
-                    background: 'rgba(255,255,255,0.02)', padding: '8px 16px', borderRadius: '999px',
-                    border: '1px solid rgba(255,255,255,0.05)'
+                    color: 'var(--edu-badge-color)',
+                    background: 'var(--edu-badge-bg)', padding: '8px 16px', borderRadius: '999px',
+                    border: '1px solid var(--edu-badge-border)'
                   }}>
-                    <Calendar size={14} color="rgba(255,255,255,0.4)" /> Currently pursuing
+                    <Calendar size={14} color="var(--edu-badge-icon)" /> Currently pursuing
                   </div>
                   <div style={{
                     display: 'flex', alignItems: 'center', gap: '8px',
                     fontFamily: 'var(--font-mono)', fontSize: '13px',
-                    color: 'rgba(255,255,255,0.6)',
-                    background: 'rgba(255,255,255,0.02)', padding: '8px 16px', borderRadius: '999px',
-                    border: '1px solid rgba(255,255,255,0.05)'
+                    color: 'var(--edu-badge-color)',
+                    background: 'var(--edu-badge-bg)', padding: '8px 16px', borderRadius: '999px',
+                    border: '1px solid var(--edu-badge-border)'
                   }}>
-                    <ChevronRight size={14} color="rgba(255,255,255,0.4)" /> 2nd Year
+                    <ChevronRight size={14} color="var(--edu-badge-icon)" /> 2nd Year
                   </div>
                 </div>
               </div>
             </div>
 
             {/* CGPA Section */}
-            <div className="edu-cgpa-container" style={{ 
+            <div className="edu-cgpa-container" style={{
               display:'flex', flexDirection:'column', alignItems: 'flex-end', gap:'8px',
-              paddingLeft: '50px', borderLeft: '1px solid rgba(255,255,255,0.25)'
+              paddingLeft: '50px', borderLeft: '1px solid var(--edu-divider)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Award size={16} color="var(--text-tertiary)" />
@@ -198,7 +196,7 @@ export default function Education() {
             align-items: flex-start !important;
             padding-left: 0 !important;
             border-left: none !important;
-            border-top: 1px solid rgba(255,255,255,0.25);
+            border-top: 1px solid var(--edu-divider);
             padding-top: 30px;
             width: 100%;
           }

@@ -193,22 +193,22 @@ function SkillBadge({ item, accent, visible, isLight }) {
         padding: '10px 14px',
         borderRadius: '12px',
         background: isLight
-          ? (hov ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.03)')
+          ? (hov ? 'var(--exp-badge-bg-hover)' : 'var(--exp-badge-bg)')
           : (hov ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.03)'),
-        border: `1px solid ${isLight ? (hov ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0.05)') : 'var(--border)'}`,
+        border: `1px solid ${isLight ? 'var(--exp-badge-border)' : 'var(--border)'}`,
         transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
         cursor: 'default',
       }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
     >
-      <span style={{ color: isLight ? '#000000' : (hov ? 'var(--text-primary)' : 'var(--text-secondary)'), transition: 'color 0.3s', flexShrink: 0 }}>{item.icon}</span>
+      <span style={{ color: isLight ? (hov ? 'var(--exp-hover-text)' : 'var(--exp-hover-text-muted)') : (hov ? 'var(--text-primary)' : 'var(--text-secondary)'), transition: 'color 0.3s', flexShrink: 0 }}>{item.icon}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <span style={{
           fontFamily: 'var(--font-display)',
           fontSize: '13px',
           fontWeight: 500,
-          color: isLight ? '#000000' : (hov ? 'var(--text-primary)' : 'var(--text-secondary)'),
+          color: isLight ? 'var(--exp-hover-text)' : (hov ? 'var(--text-primary)' : 'var(--text-secondary)'),
           transition: 'color 0.3s',
           display: 'block',
           marginBottom: '5px',
@@ -217,11 +217,11 @@ function SkillBadge({ item, accent, visible, isLight }) {
           textOverflow: 'ellipsis',
         }}>{item.name}</span>
         {/* proficiency micro-bar */}
-        <div style={{ height: '2px', background: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
+        <div style={{ height: '2px', background: isLight ? 'var(--exp-badge-border)' : 'rgba(255,255,255,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
           <div style={{
             height: '100%',
             width: visible ? `${item.prof}%` : '0%',
-            background: `linear-gradient(90deg, ${accent}, ${isLight ? 'rgba(0,0,0,0.1)' : 'transparent'})`,
+            background: `linear-gradient(90deg, ${accent}, transparent)`,
             borderRadius: '2px',
             transition: 'width 1.2s cubic-bezier(0.16,1,0.3,1)',
             transitionDelay: '0.3s',
@@ -231,7 +231,7 @@ function SkillBadge({ item, accent, visible, isLight }) {
       <span style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '10px',
-        color: isLight ? '#555555' : 'var(--text-tertiary)',
+        color: 'var(--text-tertiary)',
         flexShrink: 0,
         letterSpacing: '.05em',
       }}>{item.prof}%</span>
@@ -245,10 +245,10 @@ function CatCardContent({ cat, visible, isLight }) {
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      background: isLight ? '#C9CDD6' : 'var(--bg-primary)',
+      background: isLight ? 'var(--exp-hover-bg)' : 'var(--bg-primary)',
       borderRadius: '24px',
       padding: '36px 36px 32px',
-      border: `1px solid ${isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.1)'}`,
+      border: `1px solid ${isLight ? 'var(--exp-hover-border)' : 'rgba(255,255,255,0.1)'}`,
       position: 'relative',
       overflow: 'hidden',
     }}>
@@ -260,9 +260,9 @@ function CatCardContent({ cat, visible, isLight }) {
         width: '200px',
         height: '200px',
         borderRadius: '50%',
-        background: `radial-gradient(circle, ${cat.accent}${isLight ? '1A' : '33'} 0%, transparent 70%)`,
+        background: `radial-gradient(circle, ${cat.accent}${isLight ? '22' : '33'} 0%, transparent 70%)`,
         pointerEvents: 'none',
-        opacity: isLight ? 1 : 0.5,
+        opacity: isLight ? 0.8 : 0.5,
       }} />
 
       {/* header */}
@@ -271,9 +271,9 @@ function CatCardContent({ cat, visible, isLight }) {
           <div style={{
             width: '40px', height: '40px',
             borderRadius: '12px',
-            background: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)',
+            background: isLight ? 'var(--exp-badge-bg)' : 'rgba(255,255,255,0.05)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: isLight ? '#000000' : 'var(--text-primary)',
+            color: isLight ? 'var(--exp-hover-text)' : 'var(--text-primary)',
             flexShrink: 0,
           }}>
             {cat.catIcon}
@@ -283,7 +283,7 @@ function CatCardContent({ cat, visible, isLight }) {
               fontFamily: 'var(--font-mono)',
               fontSize: '10px',
               letterSpacing: '.18em',
-              color: isLight ? '#666666' : 'var(--text-tertiary)',
+              color: isLight ? 'var(--exp-hover-text-muted)' : 'var(--text-tertiary)',
               marginBottom: '8px',
             }}>/{cat.num}</div>
             <div style={{
@@ -291,7 +291,7 @@ function CatCardContent({ cat, visible, isLight }) {
               fontSize: '13px',
               fontWeight: 700,
               letterSpacing: '.16em',
-              color: isLight ? '#000000' : 'var(--text-secondary)',
+              color: isLight ? 'var(--exp-hover-text)' : 'var(--text-secondary)',
               textTransform: 'uppercase',
             }}>{cat.t}</div>
           </div>
@@ -303,13 +303,13 @@ function CatCardContent({ cat, visible, isLight }) {
         fontFamily: 'var(--font-body)',
         fontSize: '13.5px',
         lineHeight: 1.65,
-        color: isLight ? '#333333' : 'var(--text-tertiary)',
+        color: isLight ? 'var(--exp-hover-text-muted)' : 'var(--text-tertiary)',
         margin: '0 0 28px',
         maxWidth: '34ch',
       }}>{cat.desc}</p>
 
       {/* divider */}
-      <div style={{ height: '1px', background: isLight ? 'rgba(0,0,0,0.1)' : 'var(--border)', marginBottom: '24px' }} />
+      <div style={{ height: '1px', background: isLight ? 'var(--exp-hover-border)' : 'var(--border)', marginBottom: '24px' }} />
 
       {/* skills */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingBottom: '30px' }}>
@@ -325,7 +325,7 @@ function CatCardContent({ cat, visible, isLight }) {
         fontFamily: 'var(--font-mono)',
         fontSize: '10px',
         letterSpacing: '.10em',
-        color: isLight ? '#666666' : 'var(--text-tertiary)',
+        color: isLight ? 'var(--exp-hover-text)' : 'var(--text-tertiary)',
       }}>{cat.items.length} TOOLS</div>
     </div>
   );

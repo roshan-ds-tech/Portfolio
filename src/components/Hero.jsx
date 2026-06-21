@@ -1,9 +1,12 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { MagneticButton } from './Shared';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   const navItems = [
     { k:'develop', t:'DEVELOP', d:'M9 7L4 12L9 17M15 7L20 12L15 17' },
@@ -91,8 +94,18 @@ export default function Hero() {
       
       {/* FULL SCREEN BACKGROUND IMAGE */}
       <div className="hero-bg-img" style={{ position:'absolute', inset:0, zIndex:0, overflow:'hidden' }}>
-        <img src="/images/main_hero.png" alt="Hero background" style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center', animation: 'float-ds 3s ease-in-out infinite', mixBlendMode: 'screen' }} />
-        <div style={{ position:'absolute', inset:0, background:'var(--grad-vignette)', pointerEvents:'none' }} />
+        <img
+          src={isLight ? '/images/main_hero_white.png' : '/images/main_hero.png'}
+          alt="Hero background"
+          style={{
+            width:'100%', height:'100%', objectFit:'cover', objectPosition:'center',
+            animation: 'float-ds 3s ease-in-out infinite',
+            mixBlendMode: isLight ? 'normal' : 'screen',
+          }}
+        />
+        {!isLight && (
+          <div style={{ position:'absolute', inset:0, background:'var(--grad-vignette)', pointerEvents:'none' }} />
+        )}
       </div>
 
       {/* atmosphere */}
@@ -106,7 +119,7 @@ export default function Hero() {
       <div className="hero-copy" style={{ position:'relative', zIndex:3, paddingLeft:'clamp(1.5rem,6vw,8rem)', paddingRight:'2rem' }}>
         <h1 className="hero-name" style={{ margin:0, fontFamily:'var(--font-display)',
           fontSize:'var(--fs-display)', fontWeight:600, lineHeight:0.95, letterSpacing:'-0.03em',
-          color:'var(--text-primary)', textShadow: '0 8px 32px rgba(0,0,0,0.6)' }}>
+          color:'var(--text-primary)', textShadow: 'var(--hero-name-shadow)' }}>
           <div style={{ overflow: 'hidden' }}>
             <span className="hero-name-line" style={{ display: 'inline-block' }}>Roshan</span>
           </div>
@@ -131,9 +144,9 @@ export default function Hero() {
         <div className="hero-term" style={{ marginTop:'1.25rem', fontFamily:'var(--font-mono)',
           fontSize:'clamp(14px,1.2vw,17px)', color:'var(--link)', display: 'flex', alignItems: 'center' }}>
           <span className="hero-term-prefix" style={{ marginRight: '8px' }}>
-            <span style={{ opacity:.65 }}>&gt;</span> <span className="cursor" style={{ color:'#39FF14' }}>_</span>
+            <span style={{ opacity:.65 }}>&gt;</span> <span className="cursor" style={{ color:'var(--terminal-color)' }}>_</span>
           </span>
-          <span className="hero-term-text" style={{ display:'inline-block', overflow:'hidden', whiteSpace:'nowrap', color:'#39FF14', verticalAlign:'bottom' }}>
+          <span className="hero-term-text" style={{ display:'inline-block', overflow:'hidden', whiteSpace:'nowrap', color:'var(--terminal-color)', verticalAlign:'bottom' }}>
             building digital experiences
           </span>
         </div>

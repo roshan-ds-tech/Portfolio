@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useTheme } from './context/ThemeContext';
 
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
@@ -14,6 +15,9 @@ import Contact from './components/Contact';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   useLayoutEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -139,9 +143,14 @@ export default function App() {
   return (
     <>
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none', overflow: 'hidden' }}>
-        <img src="/images/fog.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        {/* Dim the bright top-right corner a little bit */}
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 90% 10%, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0) 50%)' }} />
+        <img
+          src={isLight ? '/images/white_fog.png' : '/images/fog.png'}
+          alt=""
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        {!isLight && (
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 90% 10%, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0) 50%)' }} />
+        )}
       </div>
       <div id="global-particles" style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:50, overflow:'hidden' }} />
       <Navbar />

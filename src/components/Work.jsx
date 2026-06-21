@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Eyebrow } from './Shared';
+import { useTheme } from '../context/ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,7 +74,7 @@ function AirScreen() {
 const SCREENS = [MythicScreen, ShreshtaScreen, CovidScreen, AirScreen];
 
 /* ── Cursor-following preview popup ────────────────────────────────── */
-function WorkPreview({ active }) {
+function WorkPreview({ active, isLight }) {
   const elRef = useRef(null);
   const isMobile = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 
@@ -94,7 +95,7 @@ function WorkPreview({ active }) {
     pointerEvents:'none', zIndex:9998, borderRadius:'16px', overflow:'hidden',
     opacity: p ? 1 : 0,
     boxShadow:'0 50px 100px rgba(0,0,0,0.78)',
-    border:'1px solid rgba(255,255,255,0.09)',
+    border:`1px solid var(--work-preview-border)`,
   };
   const desktop = {
     position:'fixed', left:0, top:0, width:'320px', height:'210px',
@@ -138,7 +139,7 @@ function WorkPreview({ active }) {
 }
 
 /* ── Project Details Popup Modal ────────────────────────────────────── */
-function ProjectModal({ projectIdx, onClose }) {
+function ProjectModal({ projectIdx, onClose, isLight }) {
   const modalOverlayRef = useRef(null);
   const modalContentRef = useRef(null);
 
@@ -182,13 +183,13 @@ function ProjectModal({ projectIdx, onClose }) {
   };
 
   return (
-    <div 
+    <div
       ref={modalOverlayRef}
       style={{
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: 'rgba(5, 5, 5, 0.85)',
+        background: 'var(--modal-overlay-bg)',
         backdropFilter: 'blur(20px)',
         display: 'flex',
         alignItems: 'center',
@@ -223,20 +224,19 @@ function ProjectModal({ projectIdx, onClose }) {
           </div>
         </div>
 
-        <div 
+        <div
           className="grain-overlay"
           style={{
             position: 'relative',
             width: '100%',
-            background: '#0a0a0a',
+            background: 'var(--modal-card-bg)',
             borderRadius: '24px',
             border: '1px solid var(--border-strong)',
-            boxShadow: '0 0 0 1px rgba(255,255,255,0.05)',
             overflow: 'hidden',
             zIndex: 10
           }}
         >
-        <button 
+        <button
           onClick={handleClose}
           style={{
             position: 'absolute',
@@ -245,9 +245,9 @@ function ProjectModal({ projectIdx, onClose }) {
             width: '40px',
             height: '40px',
             borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.06)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            color: '#F5F5F5',
+            background: 'var(--modal-close-bg)',
+            border: '1px solid var(--modal-close-border)',
+            color: 'var(--modal-close-color)',
             fontSize: '18px',
             display: 'flex',
             alignItems: 'center',
@@ -257,13 +257,13 @@ function ProjectModal({ projectIdx, onClose }) {
             transition: 'all 0.3s var(--ease-out-expo)'
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
-            e.currentTarget.style.color = '#050505';
+            e.currentTarget.style.background = isLight ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.95)';
+            e.currentTarget.style.color = isLight ? '#FFFFFF' : '#050505';
             e.currentTarget.style.transform = 'scale(1.05)';
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-            e.currentTarget.style.color = '#F5F5F5';
+            e.currentTarget.style.background = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)';
+            e.currentTarget.style.color = isLight ? '#1E1E1E' : '#F5F5F5';
             e.currentTarget.style.transform = 'scale(1)';
           }}
         >
@@ -275,7 +275,7 @@ function ProjectModal({ projectIdx, onClose }) {
         </div>
 
         <div style={{ padding: 'clamp(24px, 5vw, 40px)' }}>
-          <div className="modal-reveal" style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '.16em', color: 'rgba(255, 255, 255, 0.35)', textTransform: 'uppercase', marginBottom: '12px' }}>
+          <div className="modal-reveal" style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '.16em', color: 'var(--modal-meta-color)', textTransform: 'uppercase', marginBottom: '12px' }}>
             {p.year} · {p.cat}
           </div>
           <h2 className="modal-reveal" style={{ margin: '0 0 16px', fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 600, lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
@@ -287,20 +287,20 @@ function ProjectModal({ projectIdx, onClose }) {
           </p>
           <div className="modal-reveal" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             {p.stack.map(s => (
-              <span key={s} style={{ 
+              <span key={s} style={{
                 fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '.08em',
-                padding: '6px 14px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.04)', 
-                border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)',
+                padding: '6px 14px', borderRadius: '8px', background: 'var(--modal-tag-bg)',
+                border: `1px solid var(--modal-tag-border)`, color: 'var(--text-secondary)',
                 transition: 'all 0.3s'
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                e.currentTarget.style.background = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)';
+                e.currentTarget.style.borderColor = isLight ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
                 e.currentTarget.style.color = 'var(--text-primary)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.background = isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)';
+                e.currentTarget.style.borderColor = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)';
                 e.currentTarget.style.color = 'var(--text-secondary)';
               }}
               >
@@ -316,7 +316,7 @@ function ProjectModal({ projectIdx, onClose }) {
 }
 
 /* ── Single project row ─────────────────────────────────────────────── */
-function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
+function WorkRow({ p, i, active, onEnter, onLeave, onClick, isLight }) {
   const hov = active === i;
   return (
     <div className="work-row" onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}
@@ -347,7 +347,7 @@ function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
           {p.stack.map(s=>(
             <span key={s} style={{ fontFamily:'var(--font-mono)', fontSize:'11px', padding:'4px 10px',
               borderRadius:'var(--radius-sm)',
-              background: hov ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.03)',
+              background: hov ? 'var(--work-row-stack-bg-hov)' : 'var(--work-row-stack-bg)',
               border:'1px solid var(--border)', color:'var(--text-tertiary)',
               transition:'background .4s' }}>{s}</span>
           ))}
@@ -362,7 +362,7 @@ function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
           display:'flex', alignItems:'center', justifyContent:'center', fontSize:'16px',
           border:`1px solid ${hov ? 'var(--text-primary)' : 'var(--border-strong)'}`,
           background: hov ? 'var(--text-primary)' : 'transparent',
-          color: hov ? '#050505' : 'var(--text-secondary)',
+          color: hov ? 'var(--work-row-arrow-color)' : 'var(--text-secondary)',
           transform: hov ? 'rotate(-45deg)' : 'rotate(0)',
           transition:'transform .55s var(--ease-out-expo), background .4s, border-color .4s, color .3s' }}>↗</div>
       </div>
@@ -372,6 +372,8 @@ function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
 
 /* ── Main Work section ──────────────────────────────────────────────── */
 export default function Work() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [activeIdx, setActiveIdx] = useState(0);
   const [previewIdx, setPreviewIdx] = useState(null);
   const [modalProject, setModalProject] = useState(null);
@@ -450,7 +452,7 @@ export default function Work() {
         {/* LEFT — project list */}
         <div ref={listRef}>
           {WORK_PROJECTS.map((proj, i) => (
-            <WorkRow key={proj.n} p={proj} i={i} active={activeIdx}
+            <WorkRow key={proj.n} p={proj} i={i} active={activeIdx} isLight={isLight}
               onEnter={() => { setActiveIdx(i); setPreviewIdx(i); }}
               onLeave={() => setPreviewIdx(null)}
               onClick={() => setModalProject(i)} />
@@ -461,7 +463,7 @@ export default function Work() {
                 color:'var(--text-secondary)', textDecoration:'none', textTransform:'uppercase',
                 borderBottom:'1px solid var(--border)', paddingBottom:'4px',
                 transition:'color .3s, border-color .3s' }}
-              onMouseEnter={e=>{e.currentTarget.style.color='var(--text-primary)';e.currentTarget.style.borderColor='rgba(255,255,255,0.4)';}}
+              onMouseEnter={e=>{e.currentTarget.style.color='var(--text-primary)';e.currentTarget.style.borderColor=isLight?'rgba(0,0,0,0.4)':'rgba(255,255,255,0.4)';}}
               onMouseLeave={e=>{e.currentTarget.style.color='var(--text-secondary)';e.currentTarget.style.borderColor='var(--border)';}}>
               All projects on GitHub ↗
             </a>
@@ -502,8 +504,8 @@ export default function Work() {
         </div>
       </div>
 
-      <WorkPreview active={previewIdx} />
-      <ProjectModal projectIdx={modalProject} onClose={() => setModalProject(null)} />
+      <WorkPreview active={previewIdx} isLight={isLight} />
+      <ProjectModal projectIdx={modalProject} onClose={() => setModalProject(null)} isLight={isLight} />
     </div>
   );
 }

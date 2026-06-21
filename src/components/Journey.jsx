@@ -134,7 +134,7 @@ export default function Journey() {
           top: 0;
           bottom: 0;
           width: 2px;
-          background: rgba(255, 255, 255, 0.05);
+          background: var(--jrn-spine);
         }
         .jrn-card-wrapper {
           position: relative;
@@ -151,10 +151,10 @@ export default function Journey() {
         }
         .jrn-card-inner {
           width: 45%;
-          background: rgba(15, 15, 15, 0.6);
+          background: var(--glass-bg);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid var(--glass-border);
           border-radius: 24px;
           padding: 32px 36px;
           position: relative;
@@ -165,8 +165,8 @@ export default function Journey() {
         .jrn-card-inner:hover {
           transform: translateY(-5px);
           box-shadow: var(--glow-accent), 0 30px 60px rgba(0, 0, 0, 0.8);
-          border-color: rgba(255, 255, 255, 0.15);
-          background: rgba(20, 20, 20, 0.8);
+          border-color: var(--glass-hover-border);
+          background: var(--glass-hover-bg);
         }
         .jrn-node {
           position: absolute;
@@ -176,8 +176,8 @@ export default function Journey() {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          border: 2px solid rgba(255,255,255,0.1);
-          background: #0d0d0d;
+          border: 2px solid var(--jrn-node-border);
+          background: var(--jrn-node-bg);
           z-index: 10;
           display: flex;
           align-items: center;
@@ -189,28 +189,28 @@ export default function Journey() {
           transform: translateY(-50%);
           width: 5%;
           height: 2px;
-          background: rgba(255, 255, 255, 0.05);
+          background: var(--jrn-connector);
           z-index: 1;
         }
         .jrn-connector.left { left: 45%; right: auto; }
         .jrn-connector.right { right: 45%; left: auto; }
-        
+
         .jrn-year {
           position: absolute;
           font-family: var(--font-display);
           font-size: clamp(6rem, 12vw, 10rem);
           font-weight: 800;
           line-height: 1;
-          color: rgba(255, 255, 255, 0.15); /* Old dark grey color */
-          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2); /* Faint border by default */
+          color: var(--jrn-year-color);
+          -webkit-text-stroke: 1px var(--jrn-year-stroke);
           user-select: none;
           z-index: 0;
-          pointer-events: auto; /* Enable hovering */
+          pointer-events: auto;
           transition: all 0.3s ease;
         }
         .jrn-year:hover {
-          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5); /* Brighter border on hover */
-          text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Glow on hover */
+          -webkit-text-stroke: 1px var(--jrn-year-hover-stroke);
+          text-shadow: 0 0 15px var(--jrn-year-hover-shadow);
         }
         .jrn-year.left { left: 52%; text-align: left; right: auto; }
         .jrn-year.right { right: 52%; text-align: right; left: auto; }
@@ -310,8 +310,8 @@ export default function Journey() {
           <div className="jrn-progress" style={{
             width: '100%',
             height: '100%',
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 100%)',
-            boxShadow: '0 0 10px rgba(255,255,255,0.5)',
+            background: 'var(--jrn-progress-grad)',
+            boxShadow: '0 0 10px var(--jrn-progress-glow)',
             scaleY: 0,
             transformOrigin: 'top',
           }} />
@@ -362,12 +362,12 @@ export default function Journey() {
                           flexShrink: 0,
                           fontWeight: 600,
                         }}>/{it.num}</span>
-                        <div style={{ height: '1px', width: '32px', background: 'rgba(255,255,255,0.1)' }} />
+                        <div style={{ height: '1px', width: '32px', background: 'var(--jrn-divider)' }} />
                         <span style={{
                           fontFamily: 'var(--font-mono)',
                           fontSize: '11px',
                           letterSpacing: '.12em',
-                          color: 'rgba(255,255,255,0.4)',
+                          color: 'var(--jrn-year-meta)',
                           textTransform: 'uppercase',
                         }}>{it.y}</span>
                       </div>
@@ -378,7 +378,7 @@ export default function Journey() {
                         fontSize: 'clamp(1.2rem, 1.8vw, 1.6rem)',
                         fontWeight: 600,
                         letterSpacing: '-0.025em',
-                        color: 'rgba(255,255,255,0.95)',
+                        color: 'var(--jrn-title)',
                         lineHeight: 1.3,
                       }}>{it.t}</h3>
 
@@ -387,12 +387,12 @@ export default function Journey() {
                         fontFamily: 'var(--font-body)',
                         fontSize: '14.5px',
                         lineHeight: 1.7,
-                        color: 'rgba(255,255,255,0.6)',
+                        color: 'var(--jrn-body)',
                         maxWidth: '48ch',
                       }}>{it.d}</p>
 
                       {/* progress bar */}
-                      <div style={{ height: '3px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden', width: '100%', maxWidth: '200px' }}>
+                      <div style={{ height: '3px', background: 'var(--jrn-progress-track)', borderRadius: '3px', overflow: 'hidden', width: '100%', maxWidth: '200px' }}>
                         <div className="jrn-bar-fill" style={{
                           height: '100%',
                           width: '0%',
@@ -408,8 +408,8 @@ export default function Journey() {
                         width: '56px',
                         height: '56px',
                         borderRadius: '16px',
-                        background: 'rgba(255,255,255,0.03)',
-                        border: '1px solid rgba(255,255,255,0.05)',
+                        background: 'var(--jrn-icon-bg)',
+                        border: '1px solid var(--jrn-icon-border)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -424,11 +424,11 @@ export default function Journey() {
                         fontSize: '10px',
                         letterSpacing: '.10em',
                         textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.8)',
-                        background: 'rgba(255,255,255,0.05)',
+                        color: 'var(--jrn-tag-color)',
+                        background: 'var(--jrn-tag-bg)',
                         padding: '6px 12px',
                         borderRadius: '999px',
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        border: '1px solid var(--jrn-tag-border)',
                         whiteSpace: 'nowrap',
                         opacity: 0,
                       }}>{it.tag}</span>
