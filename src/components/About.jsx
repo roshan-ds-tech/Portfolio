@@ -158,8 +158,8 @@ export default function About() {
       </div>
       <div className="ac-stage" style={{ position:'relative', height:'740px', marginTop:'var(--space-9)',
         display:'flex', alignItems:'center', justifyContent:'center' }}>
-        <SideCard side="left" quote="Roshan built us a polished web experience — professional, fast to respond, and with a deep grasp of the requirements. Real value to the team." name="Mike O'Dell" role="CEO · Media Group" />
-        <SideCard side="right" quote="Remarkable design sense and a keen eye for detail. He consistently ships innovative, user-friendly solutions with genuine passion." name="Sanskar R. Sinha" role="Serial Entrepreneur" />
+        <SideCard side="left" quote="Roshan built us a polished web experience — professional, fast to respond, and with a deep grasp of the requirements. Real value to the team." name="Prasanna Kumar" role="CEO of Mythicreverse Studio" />
+        <SideCard side="right" quote="Remarkable design sense and a keen eye for detail. He consistently ships innovative, user-friendly solutions with genuine passion." name="Nithin" role="CEO of shreshta agro" />
         <ProfileCard />
       </div>
     </div>

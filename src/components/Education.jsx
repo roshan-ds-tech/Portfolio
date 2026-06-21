@@ -25,7 +25,7 @@ export default function Education() {
 
   return (
     <section id="education" ref={containerRef} style={{ 
-      paddingTop:'var(--section-pad-y)', paddingBottom:'var(--section-pad-y)',
+      paddingTop:'var(--section-pad-y)', paddingBottom:'calc(var(--section-pad-y) + 80px)',
       paddingLeft:'var(--section-pad-x)', paddingRight:'var(--section-pad-x)',
       position: 'relative',
       overflow: 'hidden'
@@ -58,27 +58,47 @@ export default function Education() {
         </motion.h2>
 
         <motion.div variants={itemVariants}>
-          {/* Stunning Glassmorphism Card */}
           <motion.div 
-            className="edu-card-inner"
-            whileHover={{ y: -5, boxShadow: 'var(--glow-accent), 0 40px 80px rgba(0,0,0,0.6)' }}
+            style={{ position: 'relative', marginBottom: '40px', borderRadius: '32px' }}
+            whileHover={{ y: -5, boxShadow: '0 40px 80px rgba(0,0,0,0.6)' }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            style={{
-              background: 'rgba(15, 15, 15, 0.6)',
-              backdropFilter: 'blur(30px)',
-              WebkitBackdropFilter: 'blur(30px)',
-              border: '1px solid rgba(255, 255, 255, 0.06)',
-              borderRadius: '32px',
-              padding: 'clamp(30px, 5vw, 60px)',
-              display: 'grid',
-              gridTemplateColumns: '1fr auto',
-              gap: '40px',
-              alignItems: 'center',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.02)',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
           >
+            {/* Glow Tab */}
+            <div 
+              className="pointer-events-none" 
+              style={{
+                position: 'absolute', left: 0, right: 0, bottom: '-40px', top: '72%',
+                borderRadius: '28px', background: 'rgba(230, 230, 230, 0.95)',
+                boxShadow: '0 20px 40px -16px rgba(230, 230, 230, 0.5)',
+                zIndex: 0
+              }}
+            />
+            <div style={{ position: 'absolute', left: 0, right: 0, bottom: '-40px', zIndex: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '14px', fontWeight: 600, color: '#1a1a1a' }}>
+                B.E Computer Science
+              </div>
+            </div>
+
+            {/* Stunning Glassmorphism Card */}
+            <div 
+              className="edu-card-inner"
+              style={{
+                background: 'rgba(15, 15, 15, 0.6)',
+                backdropFilter: 'blur(30px)',
+                WebkitBackdropFilter: 'blur(30px)',
+                border: '1px solid rgba(255, 255, 255, 0.06)',
+                borderRadius: '32px',
+                padding: 'clamp(30px, 5vw, 60px)',
+                display: 'grid',
+                gridTemplateColumns: '1fr auto',
+                gap: '40px',
+                alignItems: 'center',
+                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02)',
+                position: 'relative',
+                overflow: 'hidden',
+                zIndex: 10
+              }}
+            >
             {/* Top Accent Line */}
             <div style={{
               position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px',
@@ -111,7 +131,7 @@ export default function Education() {
                 <p style={{ 
                   margin:'0 0 24px', fontFamily:'var(--font-body)', fontSize:'clamp(16px, 1.8vw, 18px)', 
                   color:'var(--text-secondary)' 
-                }}>Bachelor of Science in Data Science</p>
+                }}>Bachelor of Engineering in Computer Science</p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <div style={{
@@ -162,6 +182,7 @@ export default function Education() {
               >
                 8.745
               </motion.div>
+            </div>
             </div>
           </motion.div>
         </motion.div>

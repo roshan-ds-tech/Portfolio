@@ -9,16 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 const WORK_PROJECTS = [
   { idx:'01', n:'Mythic Reverse',      cat:'WEB · 3D',  year:'2024',
     desc:'An immersive story-driven experience — real-time 3D environments, cinematic scroll, and layered depth.',
-    stack:['React','Three.js','GSAP'] },
+    stack:['React','Three.js','GSAP'], glowText: 'Immersive 3D Experience' },
   { idx:'02', n:'SHRESHTA',            cat:'PLATFORM',  year:'2024',
     desc:'Full-stack community platform — custom auth, real-time dashboards, collaborative data flows.',
-    stack:['Next.js','Node.js','PostgreSQL'] },
-  { idx:'03', n:'CyberWarriors',       cat:'SECURITY',  year:'2025',
-    desc:'Security toolkit and learning hub engineered for hackathon speed, scale, and resilience.',
-    stack:['Python','FastAPI','Supabase'] },
-  { idx:'04', n:'Air Quality Monitor', cat:'DATA · IOT', year:'2025',
+    stack:['Next.js','Node.js','PostgreSQL'], glowText: 'Community Platform' },
+  { idx:'03', n:'COVID-19 Analysis',   cat:'DATA · WEB',  year:'2026',
+    desc:'Full-stack data intelligence dashboard with a Python/FastAPI backend and Next.js frontend to analyze and forecast epidemiological data using Scikit-learn.',
+    stack:['Python','FastAPI','Next.js'], glowText: 'Data Intelligence Dashboard' },
+  { idx:'04', n:'Air Quality System', cat:'DATA · IOT', year:'2025',
     desc:'Sensor-driven dashboards with ML-powered air quality forecasting and real-time alerting.',
-    stack:['Python','Pandas','NumPy'] },
+    stack:['Python','Pandas','NumPy'], glowText: 'IoT & ML Forecasting' },
 ];
 
 /* ── Project screen mockups ─────────────────────────────────────────── */
@@ -46,75 +46,31 @@ function ShreshtaScreen() {
   );
 }
 
-function CyberScreen() {
-  const lines = [
-    '> initialising CyberWarriors v2.4.1...',
-    '> scanning network perimeter...',
-    '  [████████████████] 100%',
-    '',
-    '> SCAN COMPLETE — 3 issues found:',
-    '  CRITICAL  SQL injection  · patched ✓',
-    '  MEDIUM    Open port 8080 · reviewed ✓',
-    '  LOW       Weak cipher   · pending',
-    '',
-    '> real-time monitoring active _',
-  ];
+function CovidScreen() {
   return (
-    <div style={{ height:'100%', background:'#060e0c', overflow:'hidden', fontFamily:'var(--font-mono)' }}>
-      <div style={{ padding:'12px 16px', background:'rgba(255,255,255,0.04)', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', gap:'8px', alignItems:'center' }}>
-        {['#ff5f57','#ffbd2e','#28c840'].map(c=><span key={c} style={{ width:'10px', height:'10px', borderRadius:'50%', background:c, opacity:.7 }} />)}
-        <span style={{ marginLeft:'10px', fontSize:'11px', color:'rgba(255,255,255,0.3)', letterSpacing:'.06em' }}>bash — CyberWarriors</span>
-      </div>
-      <div style={{ padding:'18px 20px', fontSize:'11.5px', lineHeight:1.75, overflow:'hidden' }}>
-        {lines.map((l,i)=>(
-          <div key={i} style={{ color: l.startsWith('  CRITICAL') ? 'rgba(255,100,100,0.85)' : l.startsWith('  MEDIUM') ? 'rgba(255,200,80,0.75)' : (l.includes('patched') || l.includes('reviewed')) ? 'rgba(160,220,160,0.75)' : l.startsWith('>') ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.35)', whiteSpace:'pre' }}>{l||' '}</div>
-        ))}
-      </div>
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/covid19_data_analysis.jpg" 
+        alt="COVID-19 Analysis Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} 
+      />
     </div>
   );
 }
 
 function AirScreen() {
-  const sensors = [['PM2.5','38 μg/m³'],['PM10','62 μg/m³'],['O₃','14 ppb'],['NO₂','22 ppb']];
   return (
-    <div style={{ height:'100%', background:'linear-gradient(160deg,#0e1520,#080d16)', overflow:'hidden' }}>
-      <div style={{ padding:'16px 22px', borderBottom:'1px solid rgba(255,255,255,0.05)', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <div>
-          <div style={{ fontFamily:'var(--font-mono)', fontSize:'10px', letterSpacing:'.15em', color:'rgba(255,255,255,0.35)' }}>BANGALORE, IN</div>
-          <div style={{ fontFamily:'var(--font-display)', fontSize:'15px', fontWeight:600, color:'rgba(255,255,255,0.85)', letterSpacing:'-0.01em', marginTop:'2px' }}>Air Quality Monitor</div>
-        </div>
-        <div style={{ textAlign:'right' }}>
-          <div style={{ fontFamily:'var(--font-display)', fontSize:'28px', fontWeight:700, color:'rgba(255,200,80,0.9)', letterSpacing:'-0.03em' }}>142</div>
-          <div style={{ fontFamily:'var(--font-mono)', fontSize:'10px', color:'rgba(255,200,80,0.5)', letterSpacing:'.1em' }}>AQI MODERATE</div>
-        </div>
-      </div>
-      <div style={{ padding:'14px 22px' }}>
-        <div style={{ height:'6px', borderRadius:'3px', background:'rgba(255,255,255,0.06)', position:'relative', overflow:'hidden' }}>
-          <div style={{ position:'absolute', left:0, top:0, height:'100%', width:'38%', background:'linear-gradient(to right,rgba(120,220,120,0.7),rgba(255,200,80,0.8))', borderRadius:'3px' }} />
-        </div>
-        <div style={{ display:'flex', justifyContent:'space-between', marginTop:'6px', fontFamily:'var(--font-mono)', fontSize:'9px', color:'rgba(255,255,255,0.25)', letterSpacing:'.06em' }}>
-          {['GOOD','MODERATE','UNHEALTHY','HAZARDOUS'].map(l=><span key={l}>{l}</span>)}
-        </div>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'8px', padding:'0 22px' }}>
-        {sensors.map(([k,v])=>(
-          <div key={k} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.06)', borderRadius:'10px', padding:'12px 14px' }}>
-            <div style={{ fontFamily:'var(--font-mono)', fontSize:'10px', color:'rgba(255,255,255,0.3)', letterSpacing:'.1em' }}>{k}</div>
-            <div style={{ fontFamily:'var(--font-display)', fontSize:'18px', fontWeight:600, color:'rgba(255,255,255,0.8)', letterSpacing:'-0.02em', marginTop:'4px' }}>{v}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ margin:'14px 22px 0', height:'44px', background:'rgba(255,255,255,0.02)', borderRadius:'8px', border:'1px solid rgba(255,255,255,0.05)', overflow:'hidden' }}>
-        <svg viewBox="0 0 300 44" preserveAspectRatio="none" style={{ width:'100%', height:'100%' }}>
-          <polyline points="0,30 40,26 80,32 120,18 160,22 200,28 240,14 300,20" fill="none" stroke="rgba(255,200,80,0.4)" strokeWidth="1.5"/>
-          <polyline points="0,30 40,26 80,32 120,18 160,22 200,28 240,14 300,20 300,44 0,44" fill="rgba(255,200,80,0.06)" stroke="none"/>
-        </svg>
-      </div>
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/air_quality_monitoring.jpg" 
+        alt="Air Quality Monitor Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} 
+      />
     </div>
   );
 }
 
-const SCREENS = [MythicScreen, ShreshtaScreen, CyberScreen, AirScreen];
+const SCREENS = [MythicScreen, ShreshtaScreen, CovidScreen, AirScreen];
 
 /* ── Cursor-following preview popup ────────────────────────────────── */
 function WorkPreview({ active }) {
@@ -244,20 +200,42 @@ function ProjectModal({ projectIdx, onClose }) {
     >
       <div 
         ref={modalContentRef}
-        className="grain-overlay"
         style={{
           position: 'relative',
           width: '100%',
           maxWidth: '800px',
-          background: '#0a0a0a',
-          borderRadius: '24px',
-          border: '1px solid var(--border-strong)',
-          boxShadow: '0 50px 100px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05)',
-          overflow: 'hidden',
+          marginBottom: '40px',
           cursor: 'default'
         }}
         onClick={e => e.stopPropagation()}
       >
+        <div 
+          className="pointer-events-none" 
+          style={{
+            position: 'absolute', left: 0, right: 0, bottom: '-40px', top: '72%',
+            borderRadius: '28px', background: 'rgba(230, 230, 230, 0.95)',
+            zIndex: 0
+          }}
+        />
+        <div style={{ position: 'absolute', left: 0, right: 0, bottom: '-40px', zIndex: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '14px', fontWeight: 600, color: '#1a1a1a' }}>
+            {p.glowText}
+          </div>
+        </div>
+
+        <div 
+          className="grain-overlay"
+          style={{
+            position: 'relative',
+            width: '100%',
+            background: '#0a0a0a',
+            borderRadius: '24px',
+            border: '1px solid var(--border-strong)',
+            boxShadow: '0 0 0 1px rgba(255,255,255,0.05)',
+            overflow: 'hidden',
+            zIndex: 10
+          }}
+        >
         <button 
           onClick={handleClose}
           style={{
@@ -332,6 +310,7 @@ function ProjectModal({ projectIdx, onClose }) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

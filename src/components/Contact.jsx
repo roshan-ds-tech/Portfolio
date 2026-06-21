@@ -23,10 +23,10 @@ export default function Contact() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   const links = [
-    { t: 'Email', d: 'hello@roshands.dev', h: 'mailto:hello@roshands.dev', icon: Mail, color: '#B266FF' },
-    { t: 'LinkedIn', d: 'Connect professionally', h: '#', icon: LinkedinIcon, color: '#00AAFF' },
-    { t: 'GitHub', d: 'View my repositories', h: '#', icon: GithubIcon, color: '#FFFFFF' },
-    { t: 'Resume', d: 'Download my CV', h: '#', icon: FileText, color: '#00FFAA' },
+    { t: 'Email', d: 'roshands00270@gmail.com', h: 'mailto:roshands00270@gmail.com', icon: Mail, color: '#B266FF' },
+    { t: 'LinkedIn', d: 'Connect professionally', h: 'https://www.linkedin.com/in/roshan-ds-4226a8308', icon: LinkedinIcon, color: '#00AAFF', ext: true },
+    { t: 'GitHub', d: 'View my repositories', h: 'https://github.com/roshan-ds-tech', icon: GithubIcon, color: '#FFFFFF', ext: true },
+    { t: 'Resume', d: 'Download my CV', h: '/images/Roshan_Resume.pdf', icon: FileText, color: '#00FFAA', download: 'Roshan_Resume.pdf' },
   ];
 
   const containerVariants = {
@@ -124,6 +124,9 @@ export default function Contact() {
             <motion.a 
               key={l.t}
               href={l.h}
+              target={l.ext ? "_blank" : undefined}
+              rel={l.ext ? "noopener noreferrer" : undefined}
+              download={l.download ? l.download : undefined}
               whileHover={{ y: -8 }}
               whileTap={{ scale: 0.98 }}
               className="contact-card"
