@@ -6,6 +6,7 @@ import { useTheme } from './context/ThemeContext';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import About from './components/About';
+import CodingStats from './components/CodingStats';
 import Journey from './components/Journey';
 import Work from './components/Work';
 import Expertise from './components/Expertise';
@@ -161,6 +162,7 @@ export default function App() {
       </section>
       <main className="content">
         <section id="about" className="sec sec-about" data-reveal><About /></section>
+        <section id="coding-stats" className="sec"><CodingStats /></section>
         <section id="work" className="sec" data-reveal><Work /></section>
         <section id="journey" className="sec"><Journey /></section>
         <section id="expertise" className="sec" data-reveal><Expertise /></section>

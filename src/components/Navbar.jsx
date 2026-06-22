@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ExpandableTabs } from './ui/expandable-tabs';
-import { Home, Briefcase, User, Mail } from 'lucide-react';
+import { Home, Briefcase, User, Mail, Code2 } from 'lucide-react';
 
 import { ThemeToggle } from './ui/theme-toggle';
 
@@ -22,6 +22,8 @@ export default function Navbar() {
     { title: 'Home', icon: Home, id: 'hero' },
     { type: 'separator' },
     { title: 'About', icon: User, id: 'about' },
+    { type: 'separator' },
+    { title: 'Stats', icon: Code2, id: 'coding-stats' },
     { type: 'separator' },
     { title: 'Work', icon: Briefcase, id: 'work' },
     { type: 'separator' },

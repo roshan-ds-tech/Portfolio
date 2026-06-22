@@ -8,18 +8,41 @@ import { useTheme } from '../context/ThemeContext';
 gsap.registerPlugin(ScrollTrigger);
 
 const WORK_PROJECTS = [
-  { idx:'01', n:'Mythic Reverse',      cat:'WEB · 3D',  year:'2024',
-    desc:'An immersive story-driven experience — real-time 3D environments, cinematic scroll, and layered depth.',
-    stack:['React','Three.js','GSAP'], glowText: 'Immersive 3D Experience' },
-  { idx:'02', n:'SHRESHTA',            cat:'PLATFORM',  year:'2024',
-    desc:'Full-stack community platform — custom auth, real-time dashboards, collaborative data flows.',
-    stack:['Next.js','Node.js','PostgreSQL'], glowText: 'Community Platform' },
-  { idx:'03', n:'COVID-19 Analysis',   cat:'DATA · WEB',  year:'2026',
-    desc:'Full-stack data intelligence dashboard with a Python/FastAPI backend and Next.js frontend to analyze and forecast epidemiological data using Scikit-learn.',
-    stack:['Python','FastAPI','Next.js'], glowText: 'Data Intelligence Dashboard' },
-  { idx:'04', n:'Air Quality System', cat:'DATA · IOT', year:'2025',
+  { idx:'01', n:'Air Quality System', cat:'DATA · IOT', year:'2025',
     desc:'Sensor-driven dashboards with ML-powered air quality forecasting and real-time alerting.',
-    stack:['Python','Pandas','NumPy'], glowText: 'IoT & ML Forecasting' },
+    stack:['Python','Pandas','NumPy'], glowText: 'IoT & ML Forecasting',
+    popupDesc:'AeroGuard AI is a comprehensive, full-stack IoT safety system designed to proactively monitor air quality and predict environmental hazards. By integrating an ESP8266 microcontroller with an MQ135 gas sensor, the system captures real-time environmental data and streams it to a centralized Python/Flask backend. Instead of relying on static thresholds, AeroGuard AI utilizes a Multi-Output Random Forest classifier for instant risk assessment and a Deep Learning LSTM neural network to analyze rolling time-series data, successfully forecasting gas leaks and smoke buildup up to 10 minutes in advance. The ecosystem features multiple client interfaces, including a responsive React dashboard, a cross-platform Flutter mobile app, and interactive Streamlit/R-Shiny analytics platforms, providing seamless, real-time safety monitoring for smart homes and industrial facilities.',
+    popupStack:['Python', 'Flask', 'React', 'Flutter', 'Streamlit', 'Scikit-learn', 'TensorFlow', 'IoT'] },
+  { idx:'02', n:'COVID-19 Analysis',   cat:'DATA · WEB',  year:'2026',
+    desc:'Full-stack data intelligence dashboard with a Python/FastAPI backend and Next.js frontend to analyze and forecast epidemiological data using Scikit-learn.',
+    stack:['Python','FastAPI','Next.js'], glowText: 'Data Intelligence Dashboard',
+    popupDesc:'Developed an enterprise-grade data intelligence platform to process, visualize, and forecast global COVID-19 trends. The architecture leverages a robust Python ETL pipeline to normalize wide-format raw datasets into a time-series analytical format. A high-performance FastAPI backend serves this data from memory, dynamically generating Scikit-learn linear regression models to predict future case trajectories based on user-selected criteria. The frontend is a modern Next.js React application featuring responsive Tailwind CSS styling and highly interactive Plotly.js charts, including global choropleth maps, correlation heatmaps, and mortality scatter plots. Containerized with Docker Compose, the project demonstrates a complete end-to-end data science lifecycle—from raw data ingestion to an interactive, predictive web interface.',
+    popupStack:['Python', 'FastAPI', 'Next.js', 'Scikit-learn', 'Plotly.js', 'Docker', 'Tailwind CSS'] },
+  { idx:'03', n:'SHRESHTA',            cat:'PLATFORM',  year:'2024',
+    desc:'Full-stack community platform — custom auth, real-time dashboards, collaborative data flows.',
+    stack:['Next.js','Node.js','PostgreSQL'], glowText: 'Community Platform',
+    popupDesc:'Shreshta is a full-stack, direct-to-consumer (D2C) e-commerce application designed to bring premium agricultural products to the digital market. Built with a decoupled architecture, it leverages React, TypeScript, and Tailwind CSS to deliver a visually stunning and highly responsive frontend, animated seamlessly with Framer Motion. The robust backend, powered by Django REST Framework, handles secure user authentication, profile management, and cryptographically verified payment processing via Razorpay. By combining modern UI/UX principles with strict backend security measures, Shreshta provides a frictionless shopping experience from product discovery to secure checkout.',
+    popupStack:['React', 'TypeScript', 'Tailwind CSS', 'Django REST Framework', 'Razorpay', 'PostgreSQL'] },
+  { idx:'04', n:'Mythic Reverse',      cat:'WEB · 3D',  year:'2024',
+    desc:'An immersive story-driven experience — real-time 3D environments, cinematic scroll, and layered depth.',
+    stack:['React','Three.js','GSAP'], glowText: 'Immersive 3D Experience',
+    popupDesc:'MythicReverse is a full-stack, hybrid platform designed to serve as both a premium EdTech portal and a digital agency frontend. Built with React, Vite, and Tailwind CSS, the application features a breathtaking user interface powered by Framer Motion and Aceternity UI. Under the hood, a robust serverless backend (Node.js/Vercel) orchestrates complex business logic, including a highly secure Razorpay payment integration, dynamic server-side coupon validation, and automated transactional emails via Resend. The data layer is governed by Supabase, ensuring transactional integrity across complex multi-step user registrations. This project demonstrates advanced capabilities in building scalable, secure, and commercially viable web applications.',
+    popupStack:['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Supabase', 'Razorpay', 'Resend'] },
+  { idx:'05', n:'Pharmacy Management', cat:'WEB · SYSTEM', year:'2024',
+    desc:'A full-stack Flask application streamlining pharmacy inventory, customer tracking, and atomic multi-item billing.',
+    stack:['Python', 'Flask', 'SQLite'], glowText: 'Automated Pharmacy Management',
+    popupDesc:'PharmaSync is a robust, server-side rendered web application designed to digitalize the daily operations of a modern pharmacy. Built with Python, Flask, and SQLAlchemy, the system provides a seamless interface for administrators to track medicine inventory, monitor expiry dates, and manage customer records. The core of the application features a transactional billing engine capable of processing multi-item invoices while automatically deducting stock and ensuring data integrity via database rollbacks. Featuring a responsive dashboard built with Bootstrap 5, PharmaSync delivers real-time business insights, including low-stock alerts and total sales revenue, demonstrating a solid understanding of relational database design, MVC architecture, and backend transaction management.',
+    popupStack:['Python', 'Flask', 'SQLAlchemy', 'SQLite', 'Bootstrap 5', 'HTML/CSS'] },
+  { idx:'06', n:'111 International Spa', cat:'WEB · UI/UX', year:'2024',
+    desc:'A luxurious, high-performance web experience for an international spa, featuring immersive animations and seamless performance.',
+    stack:['React', 'Framer Motion', 'Tailwind CSS'], glowText: 'Premium Wellness Platform',
+    popupDesc:'111 International Spa is a digital sanctuary built to mirror the physical luxury of a high-end wellness center. Engineered as a Single Page Application using React and Vite, the platform prioritizes an immersive user experience, utilizing Framer Motion and Lenis for physics-based smooth scrolling and complex parallax animations. It acts as a comprehensive catalog for premium treatments, driving user engagement through an interactive glassmorphic UI and a streamlined newsletter lead-generation pipeline.',
+    popupStack:['React', 'Vite', 'Framer Motion', 'Lenis', 'Tailwind CSS', 'Vercel'] },
+  { idx:'07', n:'Zenitsu Clothing', cat:'WEB · E-COMMERCE', year:'2024',
+    desc:'A highly optimized, full-stack e-commerce web application utilizing React and Express to deliver a secure, seamless shopping experience.',
+    stack:['React', 'Node.js', 'SQLite'], glowText: 'Full-Stack E-Commerce Platform',
+    popupDesc:'Zenitsu Clothing is a complete e-commerce solution engineered from the ground up to deliver a premium online shopping experience. Built with a React/Vite frontend and an Express.js backend, the platform features a highly responsive UI with advanced multi-faceted product filtering, a slide-out persistent cart, and smooth animations. The backend utilizes a strictly typed SQLite database via Sequelize ORM, ensuring robust data integrity for users, products, and order histories. Security is prioritized through JWT-based stateless authentication, bcrypt password hashing, and API rate limiting.',
+    popupStack:['React', 'Vite', 'Node.js', 'Express.js', 'Sequelize', 'SQLite', 'Tailwind CSS'] },
 ];
 
 /* ── Project screen mockups ─────────────────────────────────────────── */
@@ -71,7 +94,43 @@ function AirScreen() {
   );
 }
 
-const SCREENS = [MythicScreen, ShreshtaScreen, CovidScreen, AirScreen];
+function PharmacyScreen() {
+  return (
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/pharmacy_management.jpg" 
+        alt="Pharmacy Management Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} 
+      />
+    </div>
+  );
+}
+
+function SpaScreen() {
+  return (
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/111internationalspa.png" 
+        alt="111 International Spa Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
+      />
+    </div>
+  );
+}
+
+function ZenitsuScreen() {
+  return (
+    <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: '#050505' }}>
+      <img 
+        src="/images/zenitsuclothing1.png" 
+        alt="Zenitsu Clothing Mockup" 
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
+      />
+    </div>
+  );
+}
+
+const SCREENS = [AirScreen, CovidScreen, ShreshtaScreen, MythicScreen, PharmacyScreen, SpaScreen, ZenitsuScreen];
 
 /* ── Cursor-following preview popup ────────────────────────────────── */
 function WorkPreview({ active, isLight }) {
@@ -192,9 +251,7 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
         background: 'var(--modal-overlay-bg)',
         backdropFilter: 'blur(20px)',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '24px',
+        padding: '40px 24px',
         overflowY: 'auto'
       }}
       onClick={handleClose}
@@ -205,7 +262,7 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
           position: 'relative',
           width: '100%',
           maxWidth: '800px',
-          marginBottom: '40px',
+          margin: 'auto',
           cursor: 'default'
         }}
         onClick={e => e.stopPropagation()}
@@ -213,12 +270,12 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
         <div 
           className="pointer-events-none" 
           style={{
-            position: 'absolute', left: 0, right: 0, bottom: '-40px', top: '72%',
+            position: 'absolute', left: 0, right: 0, bottom: 0, top: '72%',
             borderRadius: '28px', background: 'rgba(230, 230, 230, 0.95)',
             zIndex: 0
           }}
         />
-        <div style={{ position: 'absolute', left: 0, right: 0, bottom: '-40px', zIndex: 0 }}>
+        <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '14px', fontWeight: 600, color: '#1a1a1a' }}>
             {p.glowText}
           </div>
@@ -283,10 +340,10 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
           </h2>
           <div className="modal-reveal" style={{ width: '40px', height: '2px', background: 'var(--accent)', marginBottom: '24px' }} />
           <p className="modal-reveal" style={{ margin: '0 0 32px', fontFamily: 'var(--font-body)', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '68ch' }}>
-            {p.desc}
+            {p.popupDesc || p.desc}
           </p>
           <div className="modal-reveal" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            {p.stack.map(s => (
+            {(p.popupStack || p.stack).map(s => (
               <span key={s} style={{
                 fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '.08em',
                 padding: '6px 14px', borderRadius: '8px', background: 'var(--modal-tag-bg)',
@@ -310,8 +367,10 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
           </div>
         </div>
       </div>
+      {/* Spacer to expand the container for the absolute banner */}
+      <div style={{ height: '40px', width: '100%' }} />
     </div>
-    </div>
+  </div>
   );
 }
 
@@ -443,7 +502,7 @@ export default function Work() {
           </h2>
         </div>
         <span className="work-meta" style={{ fontFamily:'var(--font-mono)', fontSize:'12px', color:'var(--text-tertiary)',
-          letterSpacing:'.1em', paddingBottom:'8px' }}>— 04 PROJECTS</span>
+          letterSpacing:'.1em', paddingBottom:'8px' }}>— 07 PROJECTS</span>
       </div>
 
       <div className="work-split" style={{ display:'grid', gridTemplateColumns:'1fr minmax(360px,0.85fr)',

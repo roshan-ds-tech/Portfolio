@@ -67,8 +67,9 @@ export default function Education() {
             <div 
               className="pointer-events-none" 
               style={{
-                position: 'absolute', left: 0, right: 0, bottom: '-40px', top: '72%',
-                borderRadius: '28px', background: 'var(--edu-tab-bg)',
+                position: 'absolute', left: '20px', right: '20px', bottom: '-40px', height: '40px',
+                borderBottomLeftRadius: '24px', borderBottomRightRadius: '24px',
+                background: 'var(--edu-tab-bg)',
                 boxShadow: '0 20px 40px -16px var(--edu-tab-shadow)',
                 zIndex: 0
               }}

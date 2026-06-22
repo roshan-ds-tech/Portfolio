@@ -65,25 +65,7 @@ export default function Contact() {
         zIndex: 0
       }} />
 
-      {/* Marquee Text */}
-      <div aria-hidden="true" style={{
-        position: 'absolute', top: '20%', left: 0, right: 0,
-        display: 'flex', whiteSpace: 'nowrap', opacity: 0.03, zIndex: 0,
-        pointerEvents: 'none', overflow: 'hidden'
-      }}>
-        <motion.div 
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-          style={{ display: 'flex', gap: '2rem' }}
-        >
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '15vw', fontWeight: 800, WebkitTextStroke: '1px var(--contact-marquee-stroke)', color: 'transparent' }}>
-            LET'S WORK TOGETHER — LET'S WORK TOGETHER — 
-          </span>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '15vw', fontWeight: 800, WebkitTextStroke: '1px var(--contact-marquee-stroke)', color: 'transparent' }}>
-            LET'S WORK TOGETHER — LET'S WORK TOGETHER — 
-          </span>
-        </motion.div>
-      </div>
+
 
       <motion.div 
         variants={containerVariants}
