@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useSmoothScroll } from '../context/SmoothScrollContext';
 
 export function Eyebrow({ index, children }) {
   return (
@@ -14,30 +15,48 @@ export function Eyebrow({ index, children }) {
 
 export function MagneticButton({ children, variant='primary', href='#', ...rest }) {
   const ref = useRef(null);
+  const { scrollTo } = useSmoothScroll();
+
   const onMove = (e) => {
+    if (!ref.current) return;
     const r = ref.current.getBoundingClientRect();
     const x = (e.clientX - r.left - r.width/2) * 0.3;
     const y = (e.clientY - r.top - r.height/2) * 0.4;
     ref.current.style.transform = `translate(${x}px,${y}px)`;
   };
-  const reset = () => { ref.current.style.transform = 'translate(0,0)'; };
+  const reset = () => {
+    if (ref.current) ref.current.style.transform = 'translate(0,0)';
+  };
   const styles = {
     primary:{ background:'var(--btn-primary-bg)', color:'var(--btn-primary-color)', border:'1px solid var(--btn-primary-border)' },
     secondary:{ background:'transparent', color:'var(--btn-secondary-color)', border:'1px solid var(--btn-secondary-border)' },
   };
-  const [hover,setHover] = useState(false);
-  const hv = variant==='primary'
-    ? (hover?{ background:'var(--btn-primary-hover-bg)', boxShadow:'var(--glow-accent)' }:{})
-    : (hover?{ background:'var(--btn-secondary-hover-bg)', borderColor:'var(--btn-secondary-hover-border)', color:'var(--btn-secondary-hover-color)' }:{});
+
+  const handleClick = (event) => {
+    if (!href?.startsWith('#')) return;
+    event.preventDefault();
+
+    if (href === '#') {
+      scrollTo(0);
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (target) {
+      scrollTo(target, { offset: -24 });
+    }
+  };
+
   return (
     <a ref={ref} href={href} onMouseMove={onMove}
-       onMouseEnter={()=>setHover(true)} onMouseLeave={()=>{reset();setHover(false);}}
+       onClick={handleClick}
+       onMouseLeave={reset}
        style={{ display:'inline-flex', alignItems:'center', gap:'10px',
          fontFamily:'var(--font-mono)', fontWeight:500, fontSize:'14px',
          letterSpacing:'0.04em', textTransform:'uppercase', textDecoration:'none',
          padding:'15px 30px', borderRadius:'var(--radius-pill)',
          transition:'transform .5s var(--ease-out-expo), background .25s, border-color .25s, color .25s, box-shadow .5s',
-         ...styles[variant], ...hv }} {...rest}>
+         ...styles[variant] }} {...rest}>
       {children}
     </a>
   );

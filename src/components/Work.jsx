@@ -12,37 +12,44 @@ const WORK_PROJECTS = [
     desc:'Sensor-driven dashboards with ML-powered air quality forecasting and real-time alerting.',
     stack:['Python','Pandas','NumPy'], glowText: 'IoT & ML Forecasting',
     popupDesc:'AeroGuard AI is a comprehensive, full-stack IoT safety system designed to proactively monitor air quality and predict environmental hazards. By integrating an ESP8266 microcontroller with an MQ135 gas sensor, the system captures real-time environmental data and streams it to a centralized Python/Flask backend. Instead of relying on static thresholds, AeroGuard AI utilizes a Multi-Output Random Forest classifier for instant risk assessment and a Deep Learning LSTM neural network to analyze rolling time-series data, successfully forecasting gas leaks and smoke buildup up to 10 minutes in advance. The ecosystem features multiple client interfaces, including a responsive React dashboard, a cross-platform Flutter mobile app, and interactive Streamlit/R-Shiny analytics platforms, providing seamless, real-time safety monitoring for smart homes and industrial facilities.',
-    popupStack:['Python', 'Flask', 'React', 'Flutter', 'Streamlit', 'Scikit-learn', 'TensorFlow', 'IoT'] },
+    popupStack:['Python', 'Flask', 'React', 'Flutter', 'Streamlit', 'Scikit-learn', 'TensorFlow', 'IoT'],
+    link: 'https://github.com/roshan-ds-tech/air-quality-monitoring-system.git', linkType: 'github' },
   { idx:'02', n:'COVID-19 Analysis',   cat:'DATA · WEB',  year:'2026',
     desc:'Full-stack data intelligence dashboard with a Python/FastAPI backend and Next.js frontend to analyze and forecast epidemiological data using Scikit-learn.',
     stack:['Python','FastAPI','Next.js'], glowText: 'Data Intelligence Dashboard',
     popupDesc:'Developed an enterprise-grade data intelligence platform to process, visualize, and forecast global COVID-19 trends. The architecture leverages a robust Python ETL pipeline to normalize wide-format raw datasets into a time-series analytical format. A high-performance FastAPI backend serves this data from memory, dynamically generating Scikit-learn linear regression models to predict future case trajectories based on user-selected criteria. The frontend is a modern Next.js React application featuring responsive Tailwind CSS styling and highly interactive Plotly.js charts, including global choropleth maps, correlation heatmaps, and mortality scatter plots. Containerized with Docker Compose, the project demonstrates a complete end-to-end data science lifecycle—from raw data ingestion to an interactive, predictive web interface.',
-    popupStack:['Python', 'FastAPI', 'Next.js', 'Scikit-learn', 'Plotly.js', 'Docker', 'Tailwind CSS'] },
+    popupStack:['Python', 'FastAPI', 'Next.js', 'Scikit-learn', 'Plotly.js', 'Docker', 'Tailwind CSS'],
+    link: 'https://github.com/roshan-ds-tech/covid-19-Data-analysis-and-visualization.git', linkType: 'github' },
   { idx:'03', n:'SHRESHTA',            cat:'PLATFORM',  year:'2024',
     desc:'Full-stack community platform — custom auth, real-time dashboards, collaborative data flows.',
     stack:['Next.js','Node.js','PostgreSQL'], glowText: 'Community Platform',
     popupDesc:'Shreshta is a full-stack, direct-to-consumer (D2C) e-commerce application designed to bring premium agricultural products to the digital market. Built with a decoupled architecture, it leverages React, TypeScript, and Tailwind CSS to deliver a visually stunning and highly responsive frontend, animated seamlessly with Framer Motion. The robust backend, powered by Django REST Framework, handles secure user authentication, profile management, and cryptographically verified payment processing via Razorpay. By combining modern UI/UX principles with strict backend security measures, Shreshta provides a frictionless shopping experience from product discovery to secure checkout.',
-    popupStack:['React', 'TypeScript', 'Tailwind CSS', 'Django REST Framework', 'Razorpay', 'PostgreSQL'] },
+    popupStack:['React', 'TypeScript', 'Tailwind CSS', 'Django REST Framework', 'Razorpay', 'PostgreSQL'],
+    link: 'https://shreshtagro.com/', linkType: 'live' },
   { idx:'04', n:'Mythic Reverse',      cat:'WEB · 3D',  year:'2024',
     desc:'An immersive story-driven experience — real-time 3D environments, cinematic scroll, and layered depth.',
     stack:['React','Three.js','GSAP'], glowText: 'Immersive 3D Experience',
     popupDesc:'MythicReverse is a full-stack, hybrid platform designed to serve as both a premium EdTech portal and a digital agency frontend. Built with React, Vite, and Tailwind CSS, the application features a breathtaking user interface powered by Framer Motion and Aceternity UI. Under the hood, a robust serverless backend (Node.js/Vercel) orchestrates complex business logic, including a highly secure Razorpay payment integration, dynamic server-side coupon validation, and automated transactional emails via Resend. The data layer is governed by Supabase, ensuring transactional integrity across complex multi-step user registrations. This project demonstrates advanced capabilities in building scalable, secure, and commercially viable web applications.',
-    popupStack:['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Supabase', 'Razorpay', 'Resend'] },
+    popupStack:['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Supabase', 'Razorpay', 'Resend'],
+    link: 'https://www.mythicreverse.com/', linkType: 'live' },
   { idx:'05', n:'Pharmacy Management', cat:'WEB · SYSTEM', year:'2024',
     desc:'A full-stack Flask application streamlining pharmacy inventory, customer tracking, and atomic multi-item billing.',
     stack:['Python', 'Flask', 'SQLite'], glowText: 'Automated Pharmacy Management',
     popupDesc:'PharmaSync is a robust, server-side rendered web application designed to digitalize the daily operations of a modern pharmacy. Built with Python, Flask, and SQLAlchemy, the system provides a seamless interface for administrators to track medicine inventory, monitor expiry dates, and manage customer records. The core of the application features a transactional billing engine capable of processing multi-item invoices while automatically deducting stock and ensuring data integrity via database rollbacks. Featuring a responsive dashboard built with Bootstrap 5, PharmaSync delivers real-time business insights, including low-stock alerts and total sales revenue, demonstrating a solid understanding of relational database design, MVC architecture, and backend transaction management.',
-    popupStack:['Python', 'Flask', 'SQLAlchemy', 'SQLite', 'Bootstrap 5', 'HTML/CSS'] },
+    popupStack:['Python', 'Flask', 'SQLAlchemy', 'SQLite', 'Bootstrap 5', 'HTML/CSS'],
+    link: 'https://github.com/roshan-ds-tech/Pharmacy-Management-System.git', linkType: 'github' },
   { idx:'06', n:'111 International Spa', cat:'WEB · UI/UX', year:'2024',
     desc:'A luxurious, high-performance web experience for an international spa, featuring immersive animations and seamless performance.',
     stack:['React', 'Framer Motion', 'Tailwind CSS'], glowText: 'Premium Wellness Platform',
     popupDesc:'111 International Spa is a digital sanctuary built to mirror the physical luxury of a high-end wellness center. Engineered as a Single Page Application using React and Vite, the platform prioritizes an immersive user experience, utilizing Framer Motion and Lenis for physics-based smooth scrolling and complex parallax animations. It acts as a comprehensive catalog for premium treatments, driving user engagement through an interactive glassmorphic UI and a streamlined newsletter lead-generation pipeline.',
-    popupStack:['React', 'Vite', 'Framer Motion', 'Lenis', 'Tailwind CSS', 'Vercel'] },
+    popupStack:['React', 'Vite', 'Framer Motion', 'Lenis', 'Tailwind CSS', 'Vercel'],
+    link: 'https://111internationalspas.vercel.app/', linkType: 'live' },
   { idx:'07', n:'Zenitsu Clothing', cat:'WEB · E-COMMERCE', year:'2024',
     desc:'A highly optimized, full-stack e-commerce web application utilizing React and Express to deliver a secure, seamless shopping experience.',
     stack:['React', 'Node.js', 'SQLite'], glowText: 'Full-Stack E-Commerce Platform',
     popupDesc:'Zenitsu Clothing is a complete e-commerce solution engineered from the ground up to deliver a premium online shopping experience. Built with a React/Vite frontend and an Express.js backend, the platform features a highly responsive UI with advanced multi-faceted product filtering, a slide-out persistent cart, and smooth animations. The backend utilizes a strictly typed SQLite database via Sequelize ORM, ensuring robust data integrity for users, products, and order histories. Security is prioritized through JWT-based stateless authentication, bcrypt password hashing, and API rate limiting.',
-    popupStack:['React', 'Vite', 'Node.js', 'Express.js', 'Sequelize', 'SQLite', 'Tailwind CSS'] },
+    popupStack:['React', 'Vite', 'Node.js', 'Express.js', 'Sequelize', 'SQLite', 'Tailwind CSS'],
+    link: 'https://zenitsuclothing.vercel.app/', linkType: 'live' },
 ];
 
 /* ── Project screen mockups ─────────────────────────────────────────── */
@@ -133,7 +140,7 @@ function ZenitsuScreen() {
 const SCREENS = [AirScreen, CovidScreen, ShreshtaScreen, MythicScreen, PharmacyScreen, SpaScreen, ZenitsuScreen];
 
 /* ── Cursor-following preview popup ────────────────────────────────── */
-function WorkPreview({ active, isLight }) {
+function WorkPreview({ active }) {
   const elRef = useRef(null);
   const isMobile = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 
@@ -365,6 +372,46 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
               </span>
             ))}
           </div>
+
+          {p.link && (
+            <div className="modal-reveal" style={{ marginTop: '32px' }}>
+              <a href={p.link} target="_blank" rel="noopener noreferrer"
+                 style={{
+                   display: 'inline-flex',
+                   alignItems: 'center',
+                   justifyContent: 'center',
+                   padding: '12px 24px',
+                   borderRadius: '8px',
+                   background: p.linkType === 'live' ? 'var(--text-primary)' : 'transparent',
+                   border: `1px solid var(--text-primary)`,
+                   color: p.linkType === 'live' ? 'var(--bg-primary)' : 'var(--text-primary)',
+                   fontFamily: 'var(--font-mono)',
+                   fontSize: '13px',
+                   fontWeight: 600,
+                   letterSpacing: '.05em',
+                   textTransform: 'uppercase',
+                   textDecoration: 'none',
+                   transition: 'all 0.3s ease'
+                 }}
+                 onMouseEnter={e => {
+                   if (p.linkType === 'live') {
+                     e.currentTarget.style.opacity = '0.85';
+                   } else {
+                     e.currentTarget.style.background = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.1)';
+                   }
+                 }}
+                 onMouseLeave={e => {
+                   if (p.linkType === 'live') {
+                     e.currentTarget.style.opacity = '1';
+                   } else {
+                     e.currentTarget.style.background = 'transparent';
+                   }
+                 }}
+              >
+                {p.linkType === 'live' ? 'Live Demo ↗' : 'GitHub Repo ↗'}
+              </a>
+            </div>
+          )}
         </div>
       </div>
       {/* Spacer to expand the container for the absolute banner */}
@@ -375,7 +422,7 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
 }
 
 /* ── Single project row ─────────────────────────────────────────────── */
-function WorkRow({ p, i, active, onEnter, onLeave, onClick, isLight }) {
+function WorkRow({ p, i, active, onEnter, onLeave, onClick }) {
   const hov = active === i;
   return (
     <div className="work-row" onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}
@@ -511,19 +558,21 @@ export default function Work() {
         {/* LEFT — project list */}
         <div ref={listRef}>
           {WORK_PROJECTS.map((proj, i) => (
-            <WorkRow key={proj.n} p={proj} i={i} active={activeIdx} isLight={isLight}
+            <WorkRow key={proj.n} p={proj} i={i} active={activeIdx}
               onEnter={() => { setActiveIdx(i); setPreviewIdx(i); }}
               onLeave={() => setPreviewIdx(null)}
               onClick={() => setModalProject(i)} />
           ))}
           <div style={{ marginTop:'var(--space-7)' }}>
-            <a href="#"
-              style={{ fontFamily:'var(--font-mono)', fontSize:'12px', letterSpacing:'.12em',
-                color:'var(--text-secondary)', textDecoration:'none', textTransform:'uppercase',
-                borderBottom:'1px solid var(--border)', paddingBottom:'4px',
-                transition:'color .3s, border-color .3s' }}
-              onMouseEnter={e=>{e.currentTarget.style.color='var(--text-primary)';e.currentTarget.style.borderColor=isLight?'rgba(0,0,0,0.4)':'rgba(255,255,255,0.4)';}}
-              onMouseLeave={e=>{e.currentTarget.style.color='var(--text-secondary)';e.currentTarget.style.borderColor='var(--border)';}}>
+            <a href="https://github.com/roshan-ds-tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'inline-block', fontFamily:'var(--font-mono)', fontSize:'13px', fontWeight: 600, letterSpacing:'.12em',
+                color:'var(--text-primary)', textDecoration:'none', textTransform:'uppercase',
+                borderBottom:'1px solid var(--text-primary)', paddingBottom:'4px',
+                transition:'opacity .3s' }}
+              onMouseEnter={e=>{e.currentTarget.style.opacity='0.7';}}
+              onMouseLeave={e=>{e.currentTarget.style.opacity='1';}}>
               All projects on GitHub ↗
             </a>
           </div>
@@ -563,7 +612,7 @@ export default function Work() {
         </div>
       </div>
 
-      <WorkPreview active={previewIdx} isLight={isLight} />
+      <WorkPreview active={previewIdx} />
       <ProjectModal projectIdx={modalProject} onClose={() => setModalProject(null)} isLight={isLight} />
     </div>
   );

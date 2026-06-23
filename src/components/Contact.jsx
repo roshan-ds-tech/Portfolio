@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, FileText, ArrowUpRight, ArrowUp } from 'lucide-react';
 import { Eyebrow } from './Shared';
+import { useSmoothScroll } from '../context/SmoothScrollContext';
 
 const GithubIcon = ({ size = 24, strokeWidth = 2, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
@@ -21,6 +22,7 @@ const LinkedinIcon = ({ size = 24, strokeWidth = 2, color = "currentColor" }) =>
 export default function Contact() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const { scrollTo } = useSmoothScroll();
 
   const links = [
     { t: 'Email', d: 'roshands00270@gmail.com', h: 'mailto:roshands00270@gmail.com', icon: Mail, color: '#B266FF' },
@@ -43,7 +45,7 @@ export default function Contact() {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollTo(0);
   };
 
   return (

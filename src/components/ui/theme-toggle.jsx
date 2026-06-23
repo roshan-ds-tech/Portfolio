@@ -11,8 +11,15 @@ export function ThemeToggle({ className }) {
       className={cn(className)}
       onClick={toggleTheme}
       role="button"
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+      aria-pressed={!isDark}
       tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleTheme(); }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleTheme();
+        }
+      }}
       style={{
         display: 'flex', width: '64px', height: '32px', padding: '4px',
         borderRadius: '9999px', cursor: 'pointer', transition: 'all 0.3s',

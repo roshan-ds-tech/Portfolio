@@ -698,8 +698,6 @@ function AchievementsCard({ style }) {
   const trophies = [
     { title: '5th Place National Hackathon', meta: 'Competitive build pressure, shipping speed, and teamwork.' },
     { title: '280+ LeetCode Solved', meta: 'Pattern library built through deliberate repetition.' },
-    { title: '120+ GFG Solved', meta: 'Strong fundamentals reinforced through steady review.' },
-    { title: '150+ Python Problems', meta: 'Applied scripting work published and refined over time.' },
   ];
 
   return (
@@ -1334,6 +1332,7 @@ export default function CodingStats() {
           display: flex;
           flex-direction: column;
           height: 100%;
+          justify-content: space-between;
         }
 
         .cs-journey-head {
@@ -1411,6 +1410,7 @@ export default function CodingStats() {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 12px;
+          margin-top: auto;
         }
 
         .cs-journey-item {

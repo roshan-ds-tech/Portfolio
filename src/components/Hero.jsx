@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { MagneticButton } from './Shared';
 import { useTheme } from '../context/ThemeContext';
 
-export default function Hero() {
+export default function Hero({ particlesRef, loaded }) {
   const containerRef = useRef(null);
   const { theme } = useTheme();
   const isLight = theme === 'light';
@@ -16,6 +16,8 @@ export default function Hero() {
   ];
 
   useLayoutEffect(() => {
+    if (!loaded) return;
+
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) return;
 
@@ -86,7 +88,7 @@ export default function Hero() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [loaded]);
 
   return (
     <div ref={containerRef} className="hero-inner grain-overlay" style={{ position:'relative', width:'100%', height:'100%',
@@ -112,7 +114,7 @@ export default function Hero() {
       <div className="fog fog-a" />
       <div className="fog fog-b" />
       <div className="godray" />
-      <div id="hero-particles" style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:2 }} />
+      <div ref={particlesRef} id="hero-particles" style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:2 }} />
       <div style={{ position:'absolute', inset:0, background:'var(--grad-top-light)', zIndex:1, pointerEvents:'none' }} />
 
       {/* left copy */}

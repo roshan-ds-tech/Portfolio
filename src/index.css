@@ -113,11 +113,12 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 html,body{margin:0;padding:0}
 body{background:transparent;color:var(--text-primary);font-family:var(--font-body);
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block}
+a{color:inherit}
 ::selection{background:var(--accent);color:var(--text-inverse)}
 /* scrollbar */
 ::-webkit-scrollbar{width:10px}
@@ -151,7 +152,7 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
   z-index:2;
   background-color: #050505;
   background-image: url('/images/fog.png');
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -207,6 +208,21 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
 .nav-ind:hover{transform:translateY(-4px)}
 .nav-ind:hover svg{stroke:var(--accent)}
 
+.hero-cta a:hover{
+  transform:translateY(-2px);
+}
+
+.hero-cta a[href]:first-child:hover{
+  background:var(--btn-primary-hover-bg);
+  box-shadow:var(--glow-accent);
+}
+
+.hero-cta a[href]:last-child:hover{
+  background:var(--btn-secondary-hover-bg);
+  border-color:var(--btn-secondary-hover-border);
+  color:var(--btn-secondary-hover-color);
+}
+
 /* about card resting (stacked behind center) positions */
 .ac-left{transform:translateX(0px) rotate(0deg);z-index:1}
 .ac-right{transform:translateX(0px) rotate(0deg);z-index:1}
@@ -241,6 +257,7 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
   .numbers-grid{grid-template-columns:1fr !important}
 }
 @media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
   .cursor{animation:none}
 }
 

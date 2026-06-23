@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Award, Calendar, ChevronRight } from 'lucide-react';
 import { Eyebrow } from './Shared';
@@ -6,6 +6,7 @@ import { Eyebrow } from './Shared';
 export default function Education() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const [isHovered, setIsHovered] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,9 +60,17 @@ export default function Education() {
 
         <motion.div variants={itemVariants}>
           <motion.div 
-            style={{ position: 'relative', marginBottom: '40px', borderRadius: '32px' }}
-            whileHover={{ y: -5, boxShadow: '0 40px 80px rgba(0,0,0,0.6)' }}
+            style={{ 
+              position: 'relative', 
+              marginBottom: '40px', 
+              borderRadius: '32px',
+              boxShadow: isHovered ? 'var(--glow-accent), 0 40px 80px rgba(0,0,0,0.6)' : '0 10px 30px rgba(0,0,0,0.15)',
+              transition: 'box-shadow 0.4s ease'
+            }}
+            whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
           >
             {/* Glow Tab */}
             <div 
@@ -87,7 +96,8 @@ export default function Education() {
                 background: 'var(--edu-card-bg)',
                 backdropFilter: 'blur(30px)',
                 WebkitBackdropFilter: 'blur(30px)',
-                border: '1px solid var(--edu-card-border)',
+                border: `1px solid ${isHovered ? 'var(--border-strong)' : 'var(--edu-card-border)'}`,
+                transition: 'border-color 0.4s',
                 borderRadius: '32px',
                 padding: 'clamp(30px, 5vw, 60px)',
                 display: 'grid',

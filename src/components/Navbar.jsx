@@ -1,20 +1,24 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ExpandableTabs } from './ui/expandable-tabs';
 import { Home, Briefcase, User, Mail, Code2 } from 'lucide-react';
 
 import { ThemeToggle } from './ui/theme-toggle';
+import { useSmoothScroll } from '../context/SmoothScrollContext';
 
 export default function Navbar() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
+  const hiddenRef = useRef(false);
+  const { scrollTo } = useSmoothScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
+    const previous = scrollY.getPrevious() ?? 0;
+    const nextHidden = latest > previous && latest > 150;
+
+    if (nextHidden !== hiddenRef.current) {
+      hiddenRef.current = nextHidden;
+      setHidden(nextHidden);
     }
   });
 
@@ -58,11 +62,11 @@ export default function Navbar() {
           const tab = topNavTabs[index];
           if (tab && tab.id) {
             if (tab.id === 'hero') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              scrollTo(0);
             } else {
               const el = document.getElementById(tab.id);
               if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+                scrollTo(el, { offset: -24 });
               }
             }
           }
