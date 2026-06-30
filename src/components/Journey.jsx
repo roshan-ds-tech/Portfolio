@@ -253,6 +253,41 @@ export default function Journey() {
             font-size: 5rem;
           }
         }
+        /* ── Mobile: collapse inner card from 2-col to 1-col ── */
+        @media (max-width: 640px) {
+          .jrn-card-content {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .jrn-card-side {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 12px !important;
+          }
+          .jrn-card-inner {
+            padding: 20px 18px !important;
+          }
+          .jrn-card-wrapper,
+          .jrn-card-wrapper.left {
+            padding-bottom: 48px;
+          }
+          .jrn-year.left, .jrn-year.right {
+            font-size: clamp(2rem, 7vw, 3rem);
+          }
+        }
+        @media (max-width: 480px) {
+          .jrn-card-inner {
+            padding: 18px 16px !important;
+          }
+          .jrn-card-wrapper,
+          .jrn-card-wrapper.left {
+            padding-bottom: 36px;
+          }
+          .jrn-year.left, .jrn-year.right {
+            font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+          }
+        }
       `}</style>
 
       <div
@@ -367,7 +402,7 @@ export default function Journey() {
                 </div>
 
                 <div className="jrn-card-inner" style={{ opacity: 0 }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '20px', alignItems: 'start' }}>
+                  <div className="jrn-card-content" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '20px', alignItems: 'start' }}>
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                         <span
@@ -437,7 +472,7 @@ export default function Journey() {
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '16px' }}>
+                    <div className="jrn-card-side" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '16px' }}>
                       <div
                         style={{
                           width: '56px',

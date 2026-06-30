@@ -147,19 +147,23 @@ export default function App() {
         },
       });
 
-      const aboutTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.ac-stage',
-          start: 'top 80%',
-          end: 'top 32%',
-          scrub: 0.7,
-        },
-      });
+      if (window.innerWidth > 900) {
+        const aboutTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.ac-stage',
+            start: 'top 80%',
+            end: 'top 32%',
+            scrub: 0.7,
+          },
+        });
 
-      aboutTl
-        .to('.ac-left', { x: -380, rotation: -10, scale: 0.92, ease: 'none' }, 0)
-        .to('.ac-right', { x: 380, rotation: 10, scale: 0.92, ease: 'none' }, 0)
-        .to('.ac-center', { scale: 1, y: -10, ease: 'none' }, 0);
+        aboutTl
+          .to('.ac-left', { x: -380, rotation: -10, scale: 0.92, ease: 'none' }, 0)
+          .to('.ac-right', { x: 380, rotation: 10, scale: 0.92, ease: 'none' }, 0)
+          .to('.ac-center', { scale: 1, y: -10, ease: 'none' }, 0);
+      } else {
+        gsap.set('.ac-center', { scale: 1, y: 0 });
+      }
 
       if (!reduce) {
         const revealTargets = Array.from(document.querySelectorAll('[data-reveal]'));

@@ -239,20 +239,104 @@ h1,h2,h3,.hero-name,.milestone-year{font-weight:500!important}
   .hero-mono{position:absolute !important;inset:0;opacity:0.32;z-index:1 !important}
   .hero-mono img{height:100% !important;right:-10% !important}
   .hero-copy{grid-column:1;padding-right:1.5rem !important}
-  .hero-nav{flex-wrap:wrap;gap:10px}
-  .ac-stage{height:auto !important;flex-direction:column;gap:24px;padding:0 var(--section-pad-x)}
+  /* hide hero nav indicators — too cramped to fit */
+  .hero-nav{display:none !important}
+  /* shift hero image to show the full character (head visible) on portrait mobile */
+  .hero-bg-img img{object-position:right top !important}
+  .ac-stage{height:auto !important;flex-direction:column;gap:24px;padding:0 var(--section-pad-x);align-items:center}
   .ac-card{position:relative !important;transform:none !important;width:100% !important;
-    max-width:360px;height:auto !important}
+    max-width:360px;height:auto !important;margin:0 auto}
   .ac-center{order:-1}
   .ac-portrait{height:auto !important;aspect-ratio:792/1070 !important}
   .work-grid{grid-template-columns:1fr !important}
   .work-split{grid-template-columns:1fr !important}
-  .work-split>div:last-child{display:none}
+  .work-split>div:last-child{display:none !important}
   .numbers-grid{grid-template-columns:repeat(2,1fr) !important}
   .milestone{grid-template-columns:1fr !important}
   .exp-row{grid-template-columns:1fr !important;gap:12px !important}
   .contact-head{font-size:clamp(2.4rem,12vw,5rem) !important}
+  /* Journey year — pull back from desktop 10rem to something mobile-sane */
+  .jrn-year.left,.jrn-year.right{font-size:clamp(3rem,10vw,5rem)}
 }
+
+/* ── 768px: tablet / large phone landscape ── */
+@media (max-width:768px){
+  /* Hero: extra breathing room on touch screens */
+  .hero-copy{padding-top:clamp(2.5rem,7vh,4rem) !important;padding-bottom:clamp(2rem,5vh,3rem) !important}
+  /* Work rows: tighter internal padding */
+  .work-row{padding:clamp(16px,3vw,24px) clamp(12px,2.5vw,20px) !important;margin:8px 0 !important}
+  /* Contact cards: slightly tighter on tablet */
+  .contact-card{padding:24px 20px !important}
+  /* Coding stats cards: ensure comfortable minimum height */
+  .cs-card{min-height:210px}
+  /* Journey */
+  .jrn-year.left,.jrn-year.right{font-size:clamp(2.5rem,8vw,4rem)}
+  .jrn-card-inner{padding:26px 24px !important}
+}
+
+/* ── 640px: standard phones / small tablets ── */
+@media (max-width:640px){
+  /* Work row: drop the index number column, go 2-column */
+  .work-row{grid-template-columns:1fr auto !important;gap:10px !important}
+  .work-row>span:first-child{display:none !important}
+  /* Journey: collapse inner card grid so long tags don't crush content */
+  .jrn-card-inner{padding:20px 18px !important}
+  .jrn-card-content{grid-template-columns:1fr !important;gap:14px !important}
+  .jrn-card-side{flex-direction:row !important;align-items:center !important;justify-content:flex-start !important;gap:12px !important;align-self:auto !important}
+  /* Journey year */
+  .jrn-year.left,.jrn-year.right{font-size:clamp(2rem,7vw,3rem)}
+  .jrn-card-wrapper{padding-bottom:50px !important}
+  /* Numbers: single column on small phones */
+  .numbers-grid{grid-template-columns:1fr !important}
+  /* Contact footer: stack items centered */
+  .contact-footer-bottom{justify-content:center !important;gap:16px !important}
+  /* Coding stats header */
+  .cs-header{margin-bottom:20px}
+  /* Navbar: make toggle an inline flex item so it never overlaps the tabs */
+  .navbar-root{top:1.5rem !important;gap:8px !important;padding:0 !important}
+  .navbar-toggle-wrap{position:static !important;right:auto !important}
+  .expandable-tabs-container{flex-wrap:nowrap !important}
+  /* Hero: center the character image so it isn't cropped to one side */
+  .hero-bg-img img{object-position:center top !important}
+}
+
+/* ── 480px: standard phone portrait ── */
+@media (max-width:480px){
+  /* Hero CTA and roles tighter spacing */
+  .hero-cta{margin-top:1.25rem !important;gap:10px !important}
+  .hero-roles{margin-top:0.75rem !important}
+  /* shrink CTA buttons so both fit on one row at 375px */
+  .hero-cta-btn a{padding:12px 22px !important;font-size:13px !important}
+  /* Work row: hide category text, keep only the arrow */
+  .work-row>div:last-child>span{display:none !important}
+  /* Journey */
+  .jrn-year.left,.jrn-year.right{font-size:clamp(1.8rem,6vw,2.5rem)}
+  .jrn-card-wrapper{padding-bottom:36px !important}
+  /* Coding stats */
+  .cs-card{min-height:180px}
+  /* About: reduce float-card gap */
+  .ac-stage{gap:16px}
+  /* Numbers card: slightly tighter */
+  .num-card-anim > div{padding:28px 24px 24px !important}
+}
+
+/* ── 390px: iPhone 14 / common flagship ── */
+@media (max-width:390px){
+  .jrn-card-inner{width:calc(100% - 44px) !important;padding:18px 16px !important}
+  .jrn-spine{left:14px !important;transform:none !important}
+  .jrn-node{left:14px !important}
+  .jrn-year.left,.jrn-year.right{left:42px !important;font-size:1.8rem}
+  .work-row{padding:14px 12px !important}
+}
+
+/* ── 360px: small Android ── */
+@media (max-width:360px){
+  .jrn-card-inner{padding:16px 14px !important}
+  .work-row{padding:12px 10px !important}
+  .contact-card{padding:20px 16px !important}
+  .cs-card{min-height:160px}
+}
+
 @media (max-width:560px){
   .numbers-grid{grid-template-columns:1fr !important}
 }

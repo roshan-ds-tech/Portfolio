@@ -1776,6 +1776,39 @@ export default function CodingStats() {
           }
         }
 
+        @media (max-width: 640px) {
+          /* Hide disconnected track nodes; show milestones as a clean list */
+          .cs-journey-track {
+            display: none;
+          }
+          .cs-journey-grid {
+            margin-top: 0;
+            grid-template-columns: 1fr;
+            gap: 0;
+          }
+          .cs-journey-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+          }
+          .cs-journey-item:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+          }
+          [data-theme="light"] .cs-journey-item {
+            border-bottom-color: rgba(74, 60, 42, 0.08);
+          }
+          .cs-journey-head {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 16px;
+          }
+          .cs-section-blurb {
+            text-align: left;
+            max-width: none;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .cs-card,
           .cs-core-orbit,

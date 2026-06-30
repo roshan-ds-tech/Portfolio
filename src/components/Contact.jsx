@@ -155,8 +155,9 @@ export default function Contact() {
         </motion.div>
 
         {/* Footer Bottom */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
+          className="contact-footer-bottom"
           style={{
             width: '100%',
             display: 'flex',

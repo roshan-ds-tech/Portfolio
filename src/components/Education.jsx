@@ -115,9 +115,10 @@ export default function Education() {
               background: `linear-gradient(90deg, transparent, var(--edu-accent-line), transparent)`
             }} />
 
-            <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+            <div className="edu-info-row" style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
               {/* Floating Icon Container */}
               <motion.div
+                className="edu-icon-box"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 style={{
                   width: '72px', height: '72px', borderRadius: '20px',
@@ -177,16 +178,17 @@ export default function Education() {
                   textTransform:'uppercase', color:'var(--text-tertiary)' 
                 }}>CGPA</span>
               </div>
-              <motion.div 
+              <motion.div
+                className="edu-cgpa-number"
                 initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
                 animate={isInView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : { opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
                 transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.4 }}
-                style={{ 
+                style={{
                   fontFamily:'var(--font-display)', fontSize:'clamp(4rem, 7vw, 6rem)', fontWeight:700,
-                  letterSpacing:'-0.03em', 
+                  letterSpacing:'-0.03em',
                   color: 'var(--text-primary)',
                   lineHeight: 1,
-                  paddingRight: '4px' // Prevent clipping of italic/large fonts
+                  paddingRight: '4px'
                 }}
               >
                 8.745
@@ -210,6 +212,55 @@ export default function Education() {
             border-top: 1px solid var(--edu-divider);
             padding-top: 30px;
             width: 100%;
+          }
+        }
+        @media (max-width: 768px) {
+          .edu-card-inner {
+            padding: clamp(20px, 4vw, 28px) !important;
+            gap: 20px !important;
+          }
+          .edu-info-row {
+            gap: 16px !important;
+          }
+          .edu-icon-box {
+            width: 54px !important;
+            height: 54px !important;
+            border-radius: 14px !important;
+          }
+          .edu-icon-box svg {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          .edu-cgpa-container {
+            padding-top: 20px !important;
+            gap: 6px !important;
+          }
+          .edu-cgpa-number {
+            font-size: clamp(2.2rem, 8vw, 3rem) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .edu-card-inner {
+            padding: 18px !important;
+            gap: 16px !important;
+          }
+          .edu-info-row {
+            gap: 12px !important;
+          }
+          .edu-icon-box {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 12px !important;
+          }
+          .edu-icon-box svg {
+            width: 22px !important;
+            height: 22px !important;
+          }
+          .edu-cgpa-number {
+            font-size: 2rem !important;
+          }
+          .edu-cgpa-container {
+            padding-top: 16px !important;
           }
         }
       `}</style>

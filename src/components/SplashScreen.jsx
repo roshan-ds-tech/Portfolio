@@ -121,17 +121,17 @@ export default function SplashScreen({ onComplete }) {
           </div>
 
           {/* HUD Elements (Corners) */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} style={{ position: 'absolute', inset: '32px', pointerEvents: 'none', zIndex: 1, color: 'rgba(255,255,255,0.6)', fontSize: '10px', letterSpacing: '0.2em' }}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} style={{ position: 'absolute', inset: 'clamp(16px, 4vw, 32px)', pointerEvents: 'none', zIndex: 1, color: 'rgba(255,255,255,0.6)', fontSize: '10px', letterSpacing: '0.2em' }}>
             <div style={{ position: 'absolute', top: 0, left: 0 }}>SYS.BOOT_SEQ // V.1.0.4</div>
             <div style={{ position: 'absolute', top: 0, right: 0, textAlign: 'right', color: 'rgba(255,255,255,0.8)' }}>ENG: ACTIVE<br/>MEM: OK</div>
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '200px' }}>
+            <div style={{ position: 'absolute', bottom: 0, left: 0, width: 'min(200px, 44vw)' }}>
               {logs.map((log, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} style={{ marginBottom: '4px', opacity: 1 - (logs.length - 1 - i) * 0.2 }}>
                   &gt; {log}
                 </motion.div>
               ))}
             </div>
-            <div style={{ position: 'absolute', bottom: 0, right: 0 }}>LAT: 34.0522 N / LON: 118.2437 W</div>
+            <div style={{ position: 'absolute', bottom: 0, right: 0, display: window.innerWidth < 480 ? 'none' : 'block' }}>LAT: 34.0522 N / LON: 118.2437 W</div>
           </motion.div>
 
           {/* Central Emblem Group */}
@@ -187,7 +187,7 @@ export default function SplashScreen({ onComplete }) {
             </motion.div>
 
             {/* High-tech Progress Bar */}
-            <motion.div initial={{ opacity: 0, scaleX: 0.8 }} animate={{ opacity: 1, scaleX: 1 }} transition={{ delay: 0.8, duration: 0.8 }} style={{ width: '320px', marginTop: '64px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <motion.div initial={{ opacity: 0, scaleX: 0.8 }} animate={{ opacity: 1, scaleX: 1 }} transition={{ delay: 0.8, duration: 0.8 }} style={{ width: 'min(320px, calc(100vw - 3rem))', marginTop: 'clamp(32px, 8vh, 64px)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                 <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.15em', fontWeight: 500 }}>

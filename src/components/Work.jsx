@@ -212,6 +212,7 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
   useEffect(() => {
     if (projectIdx === null) return;
     document.body.style.overflow = 'hidden';
+    window.dispatchEvent(new Event('modal-opened'));
 
     const ctx = gsap.context(() => {
       gsap.fromTo(modalOverlayRef.current, 
@@ -230,6 +231,7 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
 
     return () => {
       document.body.style.overflow = '';
+      window.dispatchEvent(new Event('modal-closed'));
       ctx.revert();
     };
   }, [projectIdx]);
@@ -251,29 +253,30 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
   return (
     <div
       ref={modalOverlayRef}
+      data-lenis-prevent="true"
       style={{
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
         background: 'var(--modal-overlay-bg)',
         backdropFilter: 'blur(20px)',
-        display: 'flex',
-        padding: '40px 24px',
-        overflowY: 'auto'
+        overflowY: 'auto',
+        overscrollBehavior: 'contain'
       }}
       onClick={handleClose}
     >
-      <div 
-        ref={modalContentRef}
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: '800px',
-          margin: 'auto',
-          cursor: 'default'
-        }}
-        onClick={e => e.stopPropagation()}
-      >
+      <div style={{ display: 'flex', minHeight: '100%', padding: '40px 24px' }}>
+        <div 
+          ref={modalContentRef}
+          style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '800px',
+            margin: 'auto',
+            cursor: 'default'
+          }}
+          onClick={e => e.stopPropagation()}
+        >
         <div 
           className="pointer-events-none" 
           style={{
@@ -416,6 +419,7 @@ function ProjectModal({ projectIdx, onClose, isLight }) {
       </div>
       {/* Spacer to expand the container for the absolute banner */}
       <div style={{ height: '40px', width: '100%' }} />
+      </div>
     </div>
   </div>
   );
@@ -485,6 +489,7 @@ export default function Work() {
   const [modalProject, setModalProject] = useState(null);
   const listRef = useRef(null);
   const containerRef = useRef(null);
+  const isMobileDevice = useRef(typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches);
 
   useLayoutEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -559,9 +564,9 @@ export default function Work() {
         <div ref={listRef}>
           {WORK_PROJECTS.map((proj, i) => (
             <WorkRow key={proj.n} p={proj} i={i} active={activeIdx}
-              onEnter={() => { setActiveIdx(i); setPreviewIdx(i); }}
+              onEnter={() => { setActiveIdx(i); if (!isMobileDevice.current) setPreviewIdx(i); }}
               onLeave={() => setPreviewIdx(null)}
-              onClick={() => setModalProject(i)} />
+              onClick={() => { setPreviewIdx(null); setModalProject(i); }} />
           ))}
           <div style={{ marginTop:'var(--space-7)' }}>
             <a href="https://github.com/roshan-ds-tech"
@@ -612,7 +617,7 @@ export default function Work() {
         </div>
       </div>
 
-      <WorkPreview active={previewIdx} />
+      <WorkPreview active={modalProject !== null ? null : previewIdx} />
       <ProjectModal projectIdx={modalProject} onClose={() => setModalProject(null)} isLight={isLight} />
     </div>
   );

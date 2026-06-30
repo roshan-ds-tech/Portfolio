@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ExpandableTabs } from './ui/expandable-tabs';
 import { Home, Briefcase, User, Mail, Code2 } from 'lucide-react';
@@ -9,8 +9,20 @@ import { useSmoothScroll } from '../context/SmoothScrollContext';
 export default function Navbar() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const hiddenRef = useRef(false);
   const { scrollTo } = useSmoothScroll();
+
+  useEffect(() => {
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
+    window.addEventListener('modal-opened', handleOpen);
+    window.addEventListener('modal-closed', handleClose);
+    return () => {
+      window.removeEventListener('modal-opened', handleOpen);
+      window.removeEventListener('modal-closed', handleClose);
+    };
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -36,11 +48,12 @@ export default function Navbar() {
 
   return (
     <motion.div
+      className="navbar-root"
       variants={{
         visible: { y: 0, opacity: 1 },
         hidden: { y: -100, opacity: 0 },
       }}
-      animate={hidden ? "hidden" : "visible"}
+      animate={hidden || modalOpen ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       style={{
         position: 'fixed',
@@ -51,12 +64,12 @@ export default function Navbar() {
         justifyContent: 'center',
         alignItems: 'center',
         gap: '16px',
-        zIndex: 100, // Very high z-index to stay above everything
+        zIndex: 100,
         pointerEvents: hidden ? 'none' : 'auto',
       }}
     >
-      <ExpandableTabs 
-        tabs={topNavTabs} 
+      <ExpandableTabs
+        tabs={topNavTabs}
         onChange={(index) => {
           if (index === null) return;
           const tab = topNavTabs[index];
@@ -72,7 +85,7 @@ export default function Navbar() {
           }
         }}
       />
-      <div style={{ pointerEvents: 'auto', position: 'absolute', right: '2rem' }}>
+      <div className="navbar-toggle-wrap" style={{ pointerEvents: 'auto', position: 'absolute', right: '2rem' }}>
         <ThemeToggle />
       </div>
     </motion.div>
